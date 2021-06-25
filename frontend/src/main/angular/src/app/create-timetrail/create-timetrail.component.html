@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div>
+    <h2 class="center">creeër de competitie</h2>
+    <div class="card bg-light grabber">
+      <div class="card-header bg-warning">
+        naam
+      </div>
+      <div class="card-body">
+        <input type="text" [formControl]="name">
+      </div>
+    </div>
+    <br>
+    <div class="card bg-light grabber">
+      <div class="card-header bg-warning">
+        roundes
+      </div>
+      <div class="card-body">
+        <input type="number" min="1" max="100" [formControl]="roundes">
+      </div>
+    </div>
+    <br>
+    <div class="card bg-light grabber">
+      <div class="card-header bg-warning">
+        deelnemers
+      </div>
+      <div class="card-body">
+        <input type="text" (keyup.enter)="add(logo)" placeholder="wielrenner" #logo>
+        <ul class="list-group">
+          <li *ngFor="let athlete of athletes" class="list-group-item" >
+            {{athlete}}
+            <button class="pull-right btn btn-sm btn-warning float-right" (click)="deleteAthlete(athlete)">Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+</div>
+
+
+
+

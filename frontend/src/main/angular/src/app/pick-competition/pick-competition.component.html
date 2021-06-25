@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div>
+    <h2 class="center">kies een competitievorm</h2>
+    <div *ngFor="let comp of competitions"
+         class="card bg-light grabber"
+         (click)="pickedCompetition(comp)">
+      <div class="card-header bg-warning">
+        <i class="fa fa-futbol"></i>
+        competition
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{comp}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
