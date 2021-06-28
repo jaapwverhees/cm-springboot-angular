@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
+import {TimeTrailService} from "../services/time-trail.service";
+import {catchError, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-create-timetrail',
@@ -11,8 +13,10 @@ export class CreateTimetrailComponent implements OnInit {
   roundes = new FormControl();
   name = new FormControl();
   athletes = ["bal", "bla"];
+  result: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private timeTrailService: TimeTrailService) { }
 
   ngOnInit() {
   }
@@ -30,5 +34,9 @@ export class CreateTimetrailComponent implements OnInit {
       }
     });
     this.athletes = newItems;
+  }
+
+  create(): void {
+    this.timeTrailService.createTimetrail().subscribe(result => {this.result = result})
   }
 }

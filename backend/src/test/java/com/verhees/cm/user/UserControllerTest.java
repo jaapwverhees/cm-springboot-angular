@@ -2,10 +2,12 @@ package com.verhees.cm.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.verhees.cm.config.SecurityConfig;
+import com.verhees.cm.controller.UserController;
 import com.verhees.cm.security.CustomUserDetailsService;
 import com.verhees.cm.security.TokenProperties;
-import com.verhees.cm.user.model.User;
-import com.verhees.cm.user.model.UserCredentials;
+import com.verhees.cm.model.user.User;
+import com.verhees.cm.model.user.UserCredentials;
+import com.verhees.cm.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
