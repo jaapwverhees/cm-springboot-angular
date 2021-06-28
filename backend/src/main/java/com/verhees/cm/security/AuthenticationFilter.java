@@ -1,7 +1,7 @@
 package com.verhees.cm.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.verhees.cm.model.user.UserCredentials;
+import com.verhees.cm.user.model.UserCredentials;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;

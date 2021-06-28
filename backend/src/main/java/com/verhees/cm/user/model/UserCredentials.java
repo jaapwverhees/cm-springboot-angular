@@ -1,4 +1,4 @@
-package com.verhees.cm.model.user;
+package com.verhees.cm.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

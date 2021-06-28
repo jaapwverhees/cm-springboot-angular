@@ -1,9 +1,8 @@
 package com.verhees.cm.user;
 
-import com.verhees.cm.model.user.User;
-import com.verhees.cm.model.user.UserCredentials;
-import com.verhees.cm.repository.UserRepository;
-import com.verhees.cm.service.UserService;
+import com.verhees.cm.user.model.User;
+import com.verhees.cm.user.model.UserCredentials;
+import com.verhees.cm.user.model.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
