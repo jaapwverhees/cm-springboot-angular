@@ -12,10 +12,17 @@
     <br>
     <div class="card bg-light grabber">
       <div class="card-header bg-warning">
-        roundes
+        Datums rondes
       </div>
       <div class="card-body">
-        <input type="number" min="1" max="100" [formControl]="roundes">
+        <input type="date" (keyup.enter)="addRound(lg)" #lg>
+        <ul class="list-group">
+          <li *ngFor="let round of roundes" class="list-group-item" >
+            {{round}}
+            <button class="pull-right btn btn-sm btn-warning float-right" (click)="deleteround(round)">Delete
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
     <br>
@@ -36,6 +43,7 @@
     </div>
 
   </div>
+  <button (click)="create()">click me!!!</button>
   <br>
   <br>
   <br>

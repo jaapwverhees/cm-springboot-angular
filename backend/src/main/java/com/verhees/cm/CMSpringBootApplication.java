@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JwtSpringBootAngularScaffoldingApplication {
+public class CMSpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtSpringBootAngularScaffoldingApplication.class, args);
+		SpringApplication.run(CMSpringBootApplication.class, args);
 	}
 
 }
