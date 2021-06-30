@@ -1,8 +1,6 @@
-package com.verhees.cm.model;
+package com.verhees.cm.model.competition;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -12,7 +10,8 @@ import javax.persistence.Id;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 public abstract class Competition {
     @Id
     private String name;

@@ -1,6 +1,5 @@
-package com.verhees.cm.timeTrail;
+package com.verhees.cm.model.request;
 
-import com.verhees.cm.model.Team;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,5 +13,5 @@ import java.util.List;
 public class CreateTimeTrailRequest {
     private String name;
     private List<Date> stages;
-    private List<Team> teams;
+    private List<String> teams;
 }

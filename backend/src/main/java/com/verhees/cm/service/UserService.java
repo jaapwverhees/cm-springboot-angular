@@ -1,7 +1,7 @@
-package com.verhees.cm.user;
+package com.verhees.cm.service;
 
-import com.verhees.cm.user.model.User;
-import com.verhees.cm.user.model.UserRepository;
+import com.verhees.cm.model.user.User;
+import com.verhees.cm.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

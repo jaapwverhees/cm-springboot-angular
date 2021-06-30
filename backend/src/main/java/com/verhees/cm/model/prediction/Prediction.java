@@ -1,8 +1,10 @@
-package com.verhees.cm.model;
+package com.verhees.cm.model.prediction;
 
+import com.verhees.cm.model.user.User;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -16,15 +18,13 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Data
-public class Score {
+@Getter
+@Setter
+public abstract class Prediction {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
 
     @OneToOne
-    private Team team;
-
-    private long score;
-
+    private User user;
 }

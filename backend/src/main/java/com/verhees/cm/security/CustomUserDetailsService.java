@@ -1,7 +1,7 @@
 package com.verhees.cm.security;
 
-import com.verhees.cm.user.UserService;
-import com.verhees.cm.user.model.User;
+import com.verhees.cm.service.UserService;
+import com.verhees.cm.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

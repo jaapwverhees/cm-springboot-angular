@@ -13,6 +13,7 @@ import { PickSportComponent } from './pick-sport/pick-sport.component';
 import { PickCompetitionComponent } from './pick-competition/pick-competition.component';
 import { CreateTimetrailComponent } from './create-timetrail/create-timetrail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PickSportComponent,
     PickCompetitionComponent,
     CreateTimetrailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ManageTimeTrailComponent
   ],
     imports: [
         BrowserModule,

@@ -3,7 +3,7 @@ package com.verhees.cm.cookie;
 import com.verhees.cm.config.SecurityConfig;
 import com.verhees.cm.security.CustomUserDetailsService;
 import com.verhees.cm.security.TokenProperties;
-import com.verhees.cm.user.UserService;
+import com.verhees.cm.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

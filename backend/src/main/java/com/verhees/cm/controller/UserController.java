@@ -1,6 +1,7 @@
-package com.verhees.cm.user;
+package com.verhees.cm.controller;
 
-import com.verhees.cm.user.model.User;
+import com.verhees.cm.model.user.User;
+import com.verhees.cm.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

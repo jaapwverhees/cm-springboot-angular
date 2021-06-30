@@ -41,7 +41,7 @@ export class CreateTimetrailComponent implements OnInit {
     request.name = this.name.value;
     request.teams = this.athletes;
     this.timeTrailService.create(request).subscribe(result => {
-      result.stages.forEach(stage => {stage.teams.forEach(team => console.log(team))})
+      console.log(result);
     })
   }
 
@@ -58,5 +58,9 @@ export class CreateTimetrailComponent implements OnInit {
       }
     });
     this.athletes = newItems;
+  }
+
+  competitioninvalid():boolean {
+    return this.roundes.length < 1 || this.athletes.length < 1 && this.name === null;
   }
 }

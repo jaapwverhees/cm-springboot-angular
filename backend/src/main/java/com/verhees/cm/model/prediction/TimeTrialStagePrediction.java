@@ -1,5 +1,8 @@
-package com.verhees.cm.model;
+package com.verhees.cm.model.prediction;
 
+import com.verhees.cm.model.prediction.Prediction;
+import com.verhees.cm.model.stage.TimeTrialStage;
+import com.verhees.cm.model.team.Team;
 import lombok.*;
 
 import javax.persistence.Entity;

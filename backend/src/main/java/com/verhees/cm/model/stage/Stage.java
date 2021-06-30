@@ -1,16 +1,14 @@
-package com.verhees.cm.model;
+package com.verhees.cm.model.stage;
 
-import com.verhees.cm.user.model.User;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -18,13 +16,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-@Getter
-@Setter
-public abstract class Prediction {
+public abstract class Stage {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private long id;
 
-    @OneToOne
-    private User user;
+    private Date date;
 }

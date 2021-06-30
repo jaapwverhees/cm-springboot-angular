@@ -1,4 +1,4 @@
-package com.verhees.cm.user.model;
+package com.verhees.cm.model.user;
 
 import javax.persistence.*;
 import java.util.Objects;
