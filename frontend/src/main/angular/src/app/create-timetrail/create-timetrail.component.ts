@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
 import {CreateTimeTrailRequest} from "../models/CreateTimeTrailRequest";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-timetrail',
@@ -15,7 +16,8 @@ export class CreateTimetrailComponent implements OnInit {
   athletes = [];
 
   constructor(private formBuilder: FormBuilder,
-              private timeTrailService: TimeTrailService) { }
+              private timeTrailService: TimeTrailService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -41,7 +43,7 @@ export class CreateTimetrailComponent implements OnInit {
     request.name = this.name.value;
     request.teams = this.athletes;
     this.timeTrailService.create(request).subscribe(result => {
-      console.log(result);
+      this.router.navigate(['/manage-timeTrail', result.name]);
     })
   }
 

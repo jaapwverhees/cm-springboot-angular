@@ -5,13 +5,17 @@ import com.verhees.cm.model.request.CreateTimeTrailRequest;
 import com.verhees.cm.model.team.Team;
 import com.verhees.cm.model.competition.TimeTrail;
 import com.verhees.cm.model.stage.TimeTrialStage;
+import com.verhees.cm.repository.ScoreRepository;
 import com.verhees.cm.repository.TeamRepository;
 import com.verhees.cm.repository.TimeTrailRepository;
+import com.verhees.cm.repository.TimeTrailStageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
 
@@ -20,6 +24,12 @@ public class TimeTrailService {
 
     @Autowired
     private TimeTrailRepository timeTrailRepository;
+
+    @Autowired
+    private TimeTrailStageRepository timeTrailStageRepository;
+
+    @Autowired
+    private ScoreRepository scoreRepository;
 
     @Autowired
     private TeamRepository teamRepository;
@@ -67,5 +77,18 @@ public class TimeTrailService {
                         .team(team)
                         .build())
                 .collect(toList());
+    }
+
+    public Optional<TimeTrail> getTimeTrail(String id) {
+        return timeTrailRepository.findById(id);
+    }
+
+    public Optional<Score> updateScore(Long id, Long value) {
+        return scoreRepository.findById(id)
+                .map(score -> {
+                    score.setScore(value);
+                    return score; })
+                .map(score -> scoreRepository.save(score));
+
     }
 }

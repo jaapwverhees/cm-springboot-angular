@@ -1,7 +1,9 @@
 package com.verhees.cm.model.stage;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -16,6 +18,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
+@Getter
+@Setter
 public abstract class Stage {
     @Id
     @GeneratedValue(strategy = IDENTITY)

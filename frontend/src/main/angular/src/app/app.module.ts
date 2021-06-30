@@ -14,6 +14,7 @@ import { PickCompetitionComponent } from './pick-competition/pick-competition.co
 import { CreateTimetrailComponent } from './create-timetrail/create-timetrail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.component';
+import { TimeTrailScoreComponent } from './time-trail-score/time-trail-score.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.
     PickCompetitionComponent,
     CreateTimetrailComponent,
     PageNotFoundComponent,
-    ManageTimeTrailComponent
+    ManageTimeTrailComponent,
+    TimeTrailScoreComponent
   ],
     imports: [
         BrowserModule,

@@ -1,1 +1,24 @@
-<p>manage-time-trail works!</p>
+<div class="container-fluid">
+  <div *ngFor="let stage of timeTrail.stages">
+    <div class="card bg-light grabber">
+      <div class="card-header bg-warning">
+        stage {{stage.date | date}}
+      </div>
+      <div class="card-body">
+        <div *ngFor="let score of stage.scores">
+          <div class="card bg-light grabber">
+            <div class="card-header bg-warning">
+              team {{score.team.name}} Tijd in seconde
+            </div>
+            <div class="card-body">
+              <input #logo (keyup.enter)="setScore(logo, score.id)" placeholder="{{score.score}}" type="number">
+            </div>
+          </div>
+          <br>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>

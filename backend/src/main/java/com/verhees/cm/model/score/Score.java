@@ -21,11 +21,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Score {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
     private Team team;
 
-    private long score;
+    private Long score;
 
 }

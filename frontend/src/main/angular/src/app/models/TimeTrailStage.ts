@@ -4,7 +4,7 @@ import {Team} from "./Team";
 import {Score} from "./Score";
 
 export class TimeTrailStage extends Stage {
-  teams: Team[]
+  teams: Team[];
   scores: Score[];
   preditions: TimeTrailPrediction[];
 }

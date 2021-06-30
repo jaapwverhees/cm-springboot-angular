@@ -13,7 +13,7 @@ const routes: Routes = [
   { canActivate: [AuthGuard], path: 'pick-sport', component: PickSportComponent },
   { canActivate: [AuthGuard], path: 'pick-competition', component: PickCompetitionComponent },
   { canActivate: [AuthGuard], path: 'create-timeTrail', component: CreateTimetrailComponent },
-  { canActivate: [AuthGuard], path: 'manage-timeTrail', component: ManageTimeTrailComponent },
+  { canActivate: [AuthGuard], path: 'manage-timeTrail/:id', component: ManageTimeTrailComponent },
   { path: 'pageNotFound', component: PageNotFoundComponent }
 ];
 
