@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   static readonly TOKEN_STORAGE_KEY = 'token';
-  redirectToUrl: string = '/pick-sport';
+  redirectToUrl: string = '/admin-home';
 
   constructor(private router: Router, private tokenService: TokenService) { }
 
@@ -40,5 +40,20 @@ export class AuthService {
 
   public isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  public getRole(): void {
+    let jwt = localStorage.getItem(AuthService.TOKEN_STORAGE_KEY)
+
+    let jwtData = jwt.split('.')[1]
+    let decodedJwtJsonData = window.atob(jwtData)
+    let decodedJwtData = JSON.parse(decodedJwtJsonData)
+
+    //let isAdmin = decodedJwtData.admin
+
+    console.log('jwtData: ' + jwtData)
+    console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
+    console.log('decodedJwtData: ' + decodedJwtData)
+    ///console.log('Is admin: ' + isAdmin)
   }
 }

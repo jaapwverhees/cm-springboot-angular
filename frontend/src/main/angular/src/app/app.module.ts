@@ -15,6 +15,7 @@ import { CreateTimetrailComponent } from './create-timetrail/create-timetrail.co
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.component';
 import { TimeTrailScoreComponent } from './time-trail-score/time-trail-score.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TimeTrailScoreComponent } from './time-trail-score/time-trail-score.com
     CreateTimetrailComponent,
     PageNotFoundComponent,
     ManageTimeTrailComponent,
-    TimeTrailScoreComponent
+    TimeTrailScoreComponent,
+    AdminHomeComponent
   ],
     imports: [
         BrowserModule,

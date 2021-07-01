@@ -7,9 +7,11 @@ import {PickCompetitionComponent} from "./pick-competition/pick-competition.comp
 import {CreateTimetrailComponent} from "./create-timetrail/create-timetrail.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ManageTimeTrailComponent} from "./manage-time-trail/manage-time-trail.component";
+import {AdminHomeComponent} from "./admin-home/admin-home.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { canActivate: [AuthGuard], path: 'admin-home', component: AdminHomeComponent },
   { canActivate: [AuthGuard], path: 'pick-sport', component: PickSportComponent },
   { canActivate: [AuthGuard], path: 'pick-competition', component: PickCompetitionComponent },
   { canActivate: [AuthGuard], path: 'create-timeTrail', component: CreateTimetrailComponent },

@@ -22,18 +22,18 @@ export class TimeTrailScoreComponent implements OnInit {
   }
 
   setHour(input: HTMLInputElement) {
-    
+
   }
 
   setMinutes(input: HTMLInputElement) {
-    
+
   }
 
   setSeconds(input: HTMLInputElement) {
-    
+
   }
 
   setMilliSeconds(input: HTMLInputElement) {
-    
+
   }
 }
