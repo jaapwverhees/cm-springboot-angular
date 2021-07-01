@@ -34,7 +34,7 @@ public class UserServiceTest {
         User user = createTestUser();
         when(userRepository.save(user))
                 .thenReturn(user);
-        userService.register(user);
+        userService.registerDefaultUser(user);
 
         verify(userRepository, times(1)).save(user);
     }

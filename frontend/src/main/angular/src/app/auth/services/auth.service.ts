@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-import { TokenService } from './token.service'
-import { Credentials } from '../credentials';
-import { HttpResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {TokenService} from './token.service'
+import {Credentials} from '../credentials';
+import {HttpResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {JwtTokenCredentials} from "../../models/JwtTokenCredentials";
+import {Roles} from "../../models/Roles";
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +13,27 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   static readonly TOKEN_STORAGE_KEY = 'token';
-  redirectToUrl: string = '/admin-home';
+  redirectToUrlAdmin: string = '/admin-home';
+  redirectToUrlUser: string = '/user-home';
 
-  constructor(private router: Router, private tokenService: TokenService) { }
+  constructor(private router: Router, private tokenService: TokenService) {
+  }
 
   public login(credentials: Credentials): void {
     this.tokenService.getResponseHeaders(credentials)
-    .subscribe((res: HttpResponse<any>) => {
-      this.saveToken(res.headers.get('authorization'));
-      this.router.navigate([this.redirectToUrl]);
-    });
+      .subscribe((res: HttpResponse<any>) => {
+        this.saveToken(res.headers.get('authorization'));
+        console.log(this.getRole())
+        if(this.getRole() === Roles.ADMIN_ROLE){
+          this.router.navigate([this.redirectToUrlAdmin]);
+        }
+        if(this.getRole() === Roles.USER_ROLE){
+          this.router.navigate([this.redirectToUrlUser]);
+        }
+      });
   }
 
-  private saveToken(token: string){
+  private saveToken(token: string) {
     localStorage.setItem(AuthService.TOKEN_STORAGE_KEY, token);
   }
 
@@ -33,27 +43,20 @@ export class AuthService {
 
   public logout(): void {
     this.tokenService.logout()
-    .subscribe(() =>{
-      localStorage.removeItem(AuthService.TOKEN_STORAGE_KEY);
-    });
+      .subscribe(() => {
+        localStorage.removeItem(AuthService.TOKEN_STORAGE_KEY);
+      });
   }
 
   public isLoggedIn(): boolean {
     return !!this.getToken();
   }
 
-  public getRole(): void {
-    let jwt = localStorage.getItem(AuthService.TOKEN_STORAGE_KEY)
-
-    let jwtData = jwt.split('.')[1]
-    let decodedJwtJsonData = window.atob(jwtData)
-    let decodedJwtData = JSON.parse(decodedJwtJsonData)
-
-    //let isAdmin = decodedJwtData.admin
-
-    console.log('jwtData: ' + jwtData)
-    console.log('decodedJwtJsonData: ' + decodedJwtJsonData)
-    console.log('decodedJwtData: ' + decodedJwtData)
-    ///console.log('Is admin: ' + isAdmin)
+  public getRole(): string {
+    return JSON.parse(
+      window.atob(
+        localStorage.getItem(AuthService.TOKEN_STORAGE_KEY)
+          .split('.')[1]))
+      .authorities[0];
   }
 }

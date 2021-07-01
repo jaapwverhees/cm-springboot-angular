@@ -25,7 +25,6 @@ import java.util.List;
 public class TimeTrialStage extends Stage {
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "team_id")
     private List<Team> teams = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)

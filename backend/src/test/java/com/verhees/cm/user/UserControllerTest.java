@@ -46,9 +46,9 @@ public class UserControllerTest {
 
     @Test
     public void register() throws Exception {
-        UserCredentials userCredentials = new UserCredentials("user", "password", "USER_ROLE");
+        UserCredentials userCredentials = new UserCredentials("user", "password", "ROLE_USER");
         User user = new User(userCredentials);
-        given(userService.register(user))
+        given(userService.registerDefaultUser(user))
                 .willReturn(user);
 
         mvc.perform(post("/api/users")

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CompetitionService} from "../services/competition/competition.service";
 import {Competition} from "../models/Competition";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth/services/auth.service";
 
 @Component({
   selector: 'app-admin-home',
@@ -11,7 +12,8 @@ import {Router} from "@angular/router";
 export class AdminHomeComponent implements OnInit {
 
   constructor(private competitionService: CompetitionService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
   }
 
   competitions: Competition[]
@@ -19,7 +21,6 @@ export class AdminHomeComponent implements OnInit {
   ngOnInit() {
     this.competitionService.findAll().subscribe(result => {
       this.competitions = result;
-      console.log(result);
     });
   }
 

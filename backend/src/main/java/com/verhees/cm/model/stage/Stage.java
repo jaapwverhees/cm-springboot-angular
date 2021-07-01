@@ -23,7 +23,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public abstract class Stage {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long id;
+    private Long id;
 
     private Date date;
 }

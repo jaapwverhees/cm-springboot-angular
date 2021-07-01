@@ -23,7 +23,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public abstract class Prediction {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
     private User user;

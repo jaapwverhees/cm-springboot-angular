@@ -4,6 +4,8 @@ import {switchMap} from "rxjs/operators";
 import {of} from "rxjs";
 import {Sports} from "../models/Sport";
 import {Competitions} from "../models/Competitions";
+import {AuthService} from "../auth/services/auth.service";
+import {Roles} from "../models/Roles";
 
 @Component({
   selector: 'app-pick-competition',
@@ -14,10 +16,11 @@ export class PickCompetitionComponent implements OnInit {
   sport?: string
   competitions: string[];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit() {
-    console.log("hello");
     this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         of(params.get('id'))
@@ -34,7 +37,7 @@ export class PickCompetitionComponent implements OnInit {
 
   pickedCompetition(comp: string) {
     if(comp === Competitions.TIMETRAIL) {
-      this.router.navigate(['/create-timeTrail']);
+      this.router.navigate(['create-timeTrail'])
     } else {
       this.router.navigate(['/pageNotFound']);
     }

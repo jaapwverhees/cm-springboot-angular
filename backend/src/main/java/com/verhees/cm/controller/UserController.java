@@ -18,6 +18,10 @@ public class UserController {
 
     @PostMapping
     public User register(@RequestBody User user) {
-        return userService.register(user);
+        return userService.registerDefaultUser(user);
+    }
+    @PostMapping("/admin")
+    public User registerAdmin(@RequestBody User user) {
+        return userService.registerAdmin(user);
     }
 }

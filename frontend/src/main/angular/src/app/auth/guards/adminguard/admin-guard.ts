@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-
-import { AuthService } from '../services/auth.service';
+import {AuthService} from "../../services/auth.service";
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from "@angular/router";
+import {Observable} from "rxjs";
+import {Injectable} from "@angular/core";
+import {Roles} from "../../../models/Roles";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard {
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     let url: string = state.url;
-    return this.checkLogin(url);
+    return this.checkLogin(url) && this.authService.getRole() === Roles.ADMIN_ROLE;
   }
 
   private checkLogin(url: string): boolean {

@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import {TimeTrail} from "../models/TimeTrail";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
-import {TimeTrail} from "../models/TimeTrail";
-import {Team} from "../models/Team";
-import {TimeTrailStage} from "../models/TimeTrailStage";
-import {Score} from "../models/Score";
+import {MatSelectModule} from '@angular/material/select';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
-  selector: 'app-manage-time-trail',
-  templateUrl: './manage-time-trail.component.html',
-  styleUrls: ['./manage-time-trail.component.scss']
+  selector: 'app-bet-time-trail',
+  templateUrl: './bet-time-trail.component.html',
+  styleUrls: ['./bet-time-trail.component.scss']
 })
-export class ManageTimeTrailComponent implements OnInit {
+export class BetTimeTrailComponent implements OnInit {
 
   timeTrail: TimeTrail;
+
+
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -23,7 +24,6 @@ export class ManageTimeTrailComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.timeTrailService.getCompetition(params['id']).subscribe(result => {
         this.timeTrail = result;
-        console.log(result);
       })
     });
   }
@@ -41,4 +41,11 @@ export class ManageTimeTrailComponent implements OnInit {
     })
   }
 
+  setpredition(logo: HTMLInputElement, id: number) {
+
+  }
+
+  getPredition(id: number): number {
+    return 0;
+  }
 }

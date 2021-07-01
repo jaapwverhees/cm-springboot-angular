@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <div *ngFor="let stage of timeTrail.stages">
+    <app-stage [stage]="stage" , [scores]="stage.scores"></app-stage>
+    <br>
+  </div>
+  <br>
+  <br>
+</div>

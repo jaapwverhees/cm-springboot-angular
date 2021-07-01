@@ -16,6 +16,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.component';
 import { TimeTrailScoreComponent } from './time-trail-score/time-trail-score.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { BetTimeTrailComponent } from './bet-time-trail/bet-time-trail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import { StageComponent } from './bet-time-trail/stage/stage.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +35,21 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     PageNotFoundComponent,
     ManageTimeTrailComponent,
     TimeTrailScoreComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    UserHomeComponent,
+    BetTimeTrailComponent,
+    StageComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

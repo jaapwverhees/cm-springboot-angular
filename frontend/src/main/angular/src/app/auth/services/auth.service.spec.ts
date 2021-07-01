@@ -34,7 +34,7 @@ describe('AuthService', () => {
   });
 
   it('should have redirectToUrl option set to "cookies" by default', () => {
-    expect(service.redirectToUrl).toEqual('/cookies');
+    expect(service.redirectToUrlAdmin).toEqual('/cookies');
   });
 
   it('should call token service for ResponseHeaders when logging in a user', () => {

@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <h2 class="center">selecteer een competitie</h2>
+  <div *ngFor="let competition of competitions">
+    <div class="card bg-light grabber center" (click)="selectCompetition(competition)">
+      <div class="card-header bg-warning">
+        {{competition.name}}
+      </div>
+    </div>
+  </div>

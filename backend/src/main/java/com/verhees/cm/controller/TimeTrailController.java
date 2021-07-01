@@ -1,5 +1,6 @@
 package com.verhees.cm.controller;
 
+import com.verhees.cm.model.competition.TimeTrail;
 import com.verhees.cm.model.request.CreateTimeTrailRequest;
 import com.verhees.cm.model.response.TimeTrailResponse;
 import com.verhees.cm.model.response.TimeTrailStageResponse;
@@ -42,6 +43,10 @@ public class TimeTrailController {
     @GetMapping()
     public ResponseEntity<?> getTimeTrail(@RequestParam(name = "id") String id) {
         try {
+            TimeTrail timeTrail = timeTrailService.getTimeTrail(id).orElse(new TimeTrail());
+            timeTrail.getStages().forEach(timeTrialStage -> timeTrialStage.getTeams().forEach(team -> {
+                System.out.println(team.getName());
+            }));
             return timeTrailService.getTimeTrail(id)
                     .map(ResponseEntity::ok)
                     .orElse(ResponseEntity.badRequest().build());

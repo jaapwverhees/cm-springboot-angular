@@ -11,6 +11,7 @@ import java.util.Optional;
 public class UserService {
 
     private static final String DEFAULT_ROLE = "ROLE_USER";
+    private static final String ADMIN_ROLE = "ADMIN";
     private UserRepository userRepository;
     private BCryptPasswordEncoder encoder;
 
@@ -19,15 +20,26 @@ public class UserService {
         this.encoder = encoder;
     }
 
-    public User register(User user) {
-        setPasswordAndRole(user);
+    public User registerDefaultUser(User user) {
+        setPasswordAndRoleDefaultUser(user);
         return userRepository.save(user);
     }
 
-    private void setPasswordAndRole(User user) {
+    private void setPasswordAndRoleDefaultUser(User user) {
         user.getUserCredentials()
                 .setPassword(encoder.encode(user.getUserCredentials().getPassword()));
         user.getUserCredentials().setRole(DEFAULT_ROLE);
+    }
+
+    public User registerAdmin(User user) {
+        setPasswordAndRoleAdmin(user);
+        return userRepository.save(user);
+    }
+
+    private void setPasswordAndRoleAdmin(User user) {
+        user.getUserCredentials()
+                .setPassword(encoder.encode(user.getUserCredentials().getPassword()));
+        user.getUserCredentials().setRole(ADMIN_ROLE);
     }
 
     public Optional<User> findByUsername(String username) {
