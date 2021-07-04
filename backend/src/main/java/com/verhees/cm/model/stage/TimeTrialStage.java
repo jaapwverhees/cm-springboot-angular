@@ -1,5 +1,7 @@
 package com.verhees.cm.model.stage;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.verhees.cm.model.competition.TimeTrail;
 import com.verhees.cm.model.score.Score;
 import com.verhees.cm.model.team.Team;
 import com.verhees.cm.model.prediction.TimeTrialStagePrediction;
@@ -9,10 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +23,21 @@ import java.util.List;
 @Setter
 public class TimeTrialStage extends Stage {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name="timetrail_id", nullable = false)
+    private TimeTrail competitie;
+
+    @ManyToMany
+    @JoinTable(
+            name = "team_stage",
+            joinColumns = @JoinColumn(name = "stage_id"),
+            inverseJoinColumns = @JoinColumn(name = "team_id"))
     private List<Team> teams = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Score> scores;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TimeTrialStagePrediction> predictions;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<Score> scores;
+//
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<TimeTrialStagePrediction> predictions;
 
 }

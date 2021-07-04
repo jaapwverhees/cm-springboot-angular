@@ -1,11 +1,12 @@
 package com.verhees.cm.model.team;
 
+import com.verhees.cm.model.score.Score;
+import com.verhees.cm.model.stage.TimeTrialStage;
+import com.verhees.cm.repository.TimeTrailStageRepository;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -16,6 +17,10 @@ import javax.persistence.Id;
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+
     private String name;
+
+    @ManyToMany(mappedBy = "teams")
+    private Set<TimeTrialStage> timeTrailStage;
 }

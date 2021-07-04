@@ -6,14 +6,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
 @Setter
 public class TimeTrailResponse {
     private String name;
-    private List<TimeTrialStage> stages;
+    private Set<TimeTrialStage> stages;
 
     public static TimeTrailResponse of(TimeTrail trail) {
         return TimeTrailResponse.builder()
