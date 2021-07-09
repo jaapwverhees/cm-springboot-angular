@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <div [formGroup]="teamForm">
-        <select formControlName="team">
+        <select formControlName="team" >
           <option [ngValue]="null" disabled>athleet</option>
           <option *ngFor="let score of scores" [ngValue]="score.team.name">{{score.team.name}}</option>
         </select>

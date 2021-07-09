@@ -5,6 +5,7 @@ import {TimeTrail} from "../models/TimeTrail";
 import {Team} from "../models/Team";
 import {TimeTrailStage} from "../models/TimeTrailStage";
 import {Score} from "../models/Score";
+import {Stage} from "../models/Stage";
 
 @Component({
   selector: 'app-manage-time-trail',
@@ -14,6 +15,7 @@ import {Score} from "../models/Score";
 export class ManageTimeTrailComponent implements OnInit {
 
   timeTrail: TimeTrail;
+  stages: Stage[];
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -23,6 +25,7 @@ export class ManageTimeTrailComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.timeTrailService.getCompetition(params['id']).subscribe(result => {
         this.timeTrail = result;
+        this.stages = result.stages;
         console.log(result);
       })
     });

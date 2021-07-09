@@ -7,20 +7,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
+@MappedSuperclass
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
 @Getter
 @Setter
-public abstract class Prediction {
+public class Prediction {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;

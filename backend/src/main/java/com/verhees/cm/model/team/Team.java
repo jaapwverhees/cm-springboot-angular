@@ -1,8 +1,7 @@
 package com.verhees.cm.model.team;
 
-import com.verhees.cm.model.score.Score;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.verhees.cm.model.stage.TimeTrialStage;
-import com.verhees.cm.repository.TimeTrailStageRepository;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +20,7 @@ public class Team {
 
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "teams")
     private Set<TimeTrialStage> timeTrailStage;
 }

@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
@@ -17,7 +19,9 @@ import java.util.Set;
 @SuperBuilder
 @Getter
 @Setter
+@Table(name = "time_trial")
 public class TimeTrail extends Competition {
-    @OneToMany(mappedBy = "competitie")
+
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<TimeTrialStage> stages;
 }

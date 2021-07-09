@@ -15,10 +15,10 @@ public class TimeTrailResponse {
     private String name;
     private Set<TimeTrialStage> stages;
 
-    public static TimeTrailResponse of(TimeTrail trail) {
+    public static TimeTrailResponse of(TimeTrail trial) {
         return TimeTrailResponse.builder()
-                .name(trail.getName())
-                .stages(trail.getStages())
+                .name(trial.getName())
+                .stages(trial.getStages())
                 .build();
     }
 }

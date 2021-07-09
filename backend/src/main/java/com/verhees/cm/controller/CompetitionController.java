@@ -15,7 +15,7 @@ public class CompetitionController {
     @Autowired
     private CompetitionService competitionService;
 
-    private final Logger logger = LoggerFactory.getLogger(TimeTrailController.class);
+    private final Logger logger = LoggerFactory.getLogger(TimeTrialController.class);
 
     @GetMapping()
     public ResponseEntity<?> findAll() {

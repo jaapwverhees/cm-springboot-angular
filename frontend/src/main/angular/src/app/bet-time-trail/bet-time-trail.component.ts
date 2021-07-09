@@ -4,6 +4,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
 import {MatSelectModule} from '@angular/material/select';
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {Stage} from "../models/Stage";
 
 @Component({
   selector: 'app-bet-time-trail',
@@ -13,6 +14,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class BetTimeTrailComponent implements OnInit {
 
   timeTrail: TimeTrail;
+  stages: Stage[]
 
 
 
@@ -24,6 +26,7 @@ export class BetTimeTrailComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.timeTrailService.getCompetition(params['id']).subscribe(result => {
         this.timeTrail = result;
+        this.stages = this.timeTrail.stages;
       })
     });
   }

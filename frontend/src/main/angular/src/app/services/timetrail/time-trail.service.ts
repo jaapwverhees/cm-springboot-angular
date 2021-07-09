@@ -34,6 +34,5 @@ export class TimeTrailService {
 
   setScore(value: string, scoreId: number): Observable<Score> {
     return this.http.get<Score>(this.timeTrailURL + '/score', {headers: this.httpHeaders, params: new HttpParams().append("id", scoreId.toString()).append('value', value)})
-
   }
 }
