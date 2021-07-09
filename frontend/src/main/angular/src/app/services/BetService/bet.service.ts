@@ -36,4 +36,8 @@ export class BetService {
     return this.http.get<TimeTrailPrediction>(this.timeTrailURL + '/getPrediction', {headers: this.httpHeaders,
       params: new HttpParams().append("stageID", stageID.toString())});
   }
+
+  setWinner(id: number, id2: number) {
+
+  }
 }

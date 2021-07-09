@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { StageComponent } from './bet-time-trail/stage/stage.component';
+import { ManageStageComponent } from './manage-time-trail/manage-stage/manage-stage.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StageComponent } from './bet-time-trail/stage/stage.component';
     AdminHomeComponent,
     UserHomeComponent,
     BetTimeTrailComponent,
-    StageComponent
+    StageComponent,
+    ManageStageComponent
   ],
   imports: [
     BrowserModule,

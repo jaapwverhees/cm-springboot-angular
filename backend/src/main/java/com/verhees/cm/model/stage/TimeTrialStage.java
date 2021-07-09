@@ -27,6 +27,7 @@ public class TimeTrialStage extends Stage {
             inverseJoinColumns = @JoinColumn(name = "team_id"))
     private List<Team> teams = new ArrayList<>();
 
+    @Deprecated
     @OneToMany(cascade = CascadeType.ALL)
     private List<Score> scores;
 
@@ -34,5 +35,8 @@ public class TimeTrialStage extends Stage {
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     private List<TimeTrialStagePrediction> predictions = new ArrayList<>();
+
+    @OneToOne
+    private Team Winner;
 
 }

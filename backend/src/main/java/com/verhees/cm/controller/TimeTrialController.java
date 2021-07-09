@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import static java.util.Optional.ofNullable;
+
 @RestController
 @RequestMapping("api/timetrail")
 public class TimeTrialController {
@@ -30,12 +32,23 @@ public class TimeTrialController {
         }
     }
 
-    @GetMapping("/score")
-    public ResponseEntity<?> updateScore(@RequestParam(name = "id") Long id, @RequestParam(name = "value") Long value) {
+    @GetMapping("/setWinner")
+    public ResponseEntity<?> setWinner(@RequestParam(name = "stageID") Long stageID, @RequestParam(name = "teamID") Long teamID) {
         try {
-            return timeTrialService.updateScore(id, value)
+            return timeTrialService.setWinner(stageID, teamID)
                     .map(ResponseEntity::ok)
                     .orElse(ResponseEntity.badRequest().build());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+    @GetMapping("/getWinner")
+    public ResponseEntity<?> getWinner(@RequestParam(name = "stageID") Long stageID) {
+        try {
+            return ResponseEntity.ok(ofNullable(timeTrialService.getWinner(stageID))
+                    .orElse(null));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
@@ -56,7 +69,8 @@ public class TimeTrialController {
     @GetMapping("/getPrediction")
     public ResponseEntity<?> getPrediction(@RequestParam(name = "stageID") Long stageID) {
         try {
-            return ResponseEntity.ok(timeTrialService.getPrediction(getPrincipal().getUsername(), stageID));
+            return ResponseEntity.ok(ofNullable(timeTrialService.getPrediction(getPrincipal().getUsername(), stageID))
+                    .orElse(null));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
@@ -69,6 +83,16 @@ public class TimeTrialController {
             return timeTrialService.getTimeTrail(id)
                     .map(ResponseEntity::ok)
                     .orElse(ResponseEntity.badRequest().build());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+    @GetMapping("/getCorrectPredictions")
+    public ResponseEntity<?> getCorrectPredictions(@RequestParam(name = "stageID") Long stageID) {
+        try {
+            return ResponseEntity.ok(timeTrialService.getCorrectPredictions(stageID));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
