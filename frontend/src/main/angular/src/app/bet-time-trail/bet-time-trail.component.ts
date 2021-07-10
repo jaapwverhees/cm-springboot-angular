@@ -21,8 +21,7 @@ export class BetTimeTrailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private timeTrailService: TimeTrailService,
-              private timeTrialStageService: TimeTrailStageService) {}
+              private timeTrailService: TimeTrailService) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {

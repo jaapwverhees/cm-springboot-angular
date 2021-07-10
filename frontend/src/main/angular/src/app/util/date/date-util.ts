@@ -4,4 +4,10 @@ export class DateUtil {
     var g1 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
     return g1.getTime() > date.getTime();
   }
+
+  static currentDateAfterStage(date : Date) {
+    let d = new Date();
+    var g1 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    return g1.getTime() < date.getTime();
+  }
 }

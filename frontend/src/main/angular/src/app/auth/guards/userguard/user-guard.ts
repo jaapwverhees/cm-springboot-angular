@@ -13,9 +13,6 @@ export class UserGuard {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-    console.log(this.checkLogin(state.url))
-    console.log(this.authService.getRole());
     let url: string = state.url;
     return this.checkLogin(url) && this.authService.getRole() === Roles.USER_ROLE;
   }

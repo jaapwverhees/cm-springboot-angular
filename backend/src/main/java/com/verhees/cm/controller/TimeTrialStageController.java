@@ -6,7 +6,6 @@ import com.verhees.cm.service.TimeTrialStageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,8 +29,7 @@ public class TimeTrialStageController {
     @GetMapping("/bet")
     public ResponseEntity<?> bet(@RequestParam(name = "teamID") Long teamID, @RequestParam(name = "stageID") Long stageID) {
         try {
-            Team team = timeTrialStageService.placeBet(getPrincipal().getUsername(), stageID, teamID);
-            return ResponseEntity.ok(team);
+            return ResponseEntity.ok(timeTrialStageService.placeBet(getPrincipal().getUsername(), stageID, teamID));
         } catch (IllegalDateException e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(NOT_ACCEPTABLE).build();

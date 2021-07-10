@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CompetitionService} from "../services/competition/competition.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth/services/auth.service";
 import {Competition} from "../models/Competition";
 
 @Component({
@@ -12,7 +11,7 @@ import {Competition} from "../models/Competition";
 export class UserHomeComponent implements OnInit {
 
   constructor(private competitionService: CompetitionService,
-               private router: Router) {
+              private router: Router) {
   }
 
   competitions: Competition[]

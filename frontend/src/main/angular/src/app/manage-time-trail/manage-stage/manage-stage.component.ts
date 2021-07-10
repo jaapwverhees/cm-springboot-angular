@@ -3,6 +3,7 @@ import {Stage} from "../../models/Stage";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {TimeTrailService} from "../../services/timetrail/time-trail.service";
 import {TimeTrailStageService} from "../../services/timetrailstage/time-trail-stage.service";
+import {DateUtil} from "../../util/date/date-util";
 
 @Component({
   selector: 'app-manage-stage',
@@ -24,7 +25,7 @@ export class ManageStageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.disabled = this.currentDateAfterStage();
+    this.disabled = DateUtil.currentDateAfterStage(new Date(this.stage.date));
     this.teamForm = this.fb.group({
       team: new FormControl({value: [null], disabled: this.disabled})
     });
@@ -34,12 +35,6 @@ export class ManageStageComponent implements OnInit {
       }
       this.onChanges();
     });
-  }
-
-  currentDateAfterStage() {
-    let d = new Date();
-    var g1 = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-    return g1.getTime() < new Date(this.stage.date).getTime();
   }
 
   onChanges(): void {

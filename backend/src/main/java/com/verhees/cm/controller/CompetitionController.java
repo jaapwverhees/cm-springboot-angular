@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/competition")
 public class CompetitionController {
+
     @Autowired
     private CompetitionService competitionService;
 

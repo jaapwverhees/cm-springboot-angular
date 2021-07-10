@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {switchMap} from "rxjs/operators";
 import {of} from "rxjs";
 import {Sports} from "../models/Sport";
 import {Competitions} from "../models/Competitions";
-import {AuthService} from "../auth/services/auth.service";
-import {Roles} from "../models/Roles";
 
 @Component({
   selector: 'app-pick-competition',
@@ -17,8 +15,8 @@ export class PickCompetitionComponent implements OnInit {
   competitions: string[];
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
-              private authService: AuthService) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.route.paramMap.pipe(
@@ -28,7 +26,7 @@ export class PickCompetitionComponent implements OnInit {
     ).subscribe((d) => {
       this.sport = d;
     });
-    if(this.sport === Sports.BICLYCE) {
+    if (this.sport === Sports.BICLYCE) {
       this.competitions = [Competitions.TIMETRAIL]
     } else if (this.sport === Sports.FOOTBALL) {
       this.competitions = [Competitions.CHAMPOINSHIP, Competitions.KNOCKOUT]
@@ -36,7 +34,7 @@ export class PickCompetitionComponent implements OnInit {
   }
 
   pickedCompetition(comp: string) {
-    if(comp === Competitions.TIMETRAIL) {
+    if (comp === Competitions.TIMETRAIL) {
       this.router.navigate(['create-timeTrail'])
     } else {
       this.router.navigate(['/pageNotFound']);

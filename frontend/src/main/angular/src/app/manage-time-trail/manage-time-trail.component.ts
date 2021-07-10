@@ -26,7 +26,6 @@ export class ManageTimeTrailComponent implements OnInit {
       this.timeTrailService.getCompetition(params['id']).subscribe(result => {
         this.timeTrail = result;
         this.stages = result.stages;
-        console.log(result);
       })
     });
   }

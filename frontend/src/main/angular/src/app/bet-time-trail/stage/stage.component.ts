@@ -57,6 +57,7 @@ export class StageComponent implements OnInit {
       this.stage.scores.forEach(score => {
         if(score.team.name === val.team){
           this.timeTrailStageService.BetTimeTrail(this.stage.id, score.team.id).subscribe(name => {
+          //TODO noodzakelijk??
           });
         }
       });

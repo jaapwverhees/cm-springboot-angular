@@ -12,8 +12,7 @@ import {AuthService} from "../auth/services/auth.service";
 export class AdminHomeComponent implements OnInit {
 
   constructor(private competitionService: CompetitionService,
-              private router: Router,
-              private authService: AuthService) {
+              private router: Router) {
   }
 
   competitions: Competition[]

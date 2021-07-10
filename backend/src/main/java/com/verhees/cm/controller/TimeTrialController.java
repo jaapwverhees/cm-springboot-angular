@@ -2,17 +2,12 @@ package com.verhees.cm.controller;
 
 import com.verhees.cm.model.request.CreateTimeTrailRequest;
 import com.verhees.cm.model.response.TimeTrailResponse;
-import com.verhees.cm.model.team.Team;
 import com.verhees.cm.service.TimeTrialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-
-import static java.util.Optional.ofNullable;
 
 @RestController
 @RequestMapping("api/timetrail")
