@@ -5,6 +5,7 @@ import {TimeTrailService} from "../services/timetrail/time-trail.service";
 import {MatSelectModule} from '@angular/material/select';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Stage} from "../models/Stage";
+import {TimeTrailStageService} from "../services/timetrailstage/time-trail-stage.service";
 
 @Component({
   selector: 'app-bet-time-trail',
@@ -20,7 +21,8 @@ export class BetTimeTrailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private timeTrailService: TimeTrailService) {}
+              private timeTrailService: TimeTrailService,
+              private timeTrialStageService: TimeTrailStageService) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -29,26 +31,5 @@ export class BetTimeTrailComponent implements OnInit {
         this.stages = this.timeTrail.stages;
       })
     });
-  }
-
-  setScore(logo: HTMLInputElement, id: number) {
-    //TODO when time implement TimeTrailScore;
-    this.timeTrailService.setScore(logo.value, id).subscribe(result => {
-      this.timeTrail.stages.forEach(stage => {
-        stage.scores.forEach(score =>{
-          if(score.id === result.id){
-            score = result;
-          }
-        })
-      })
-    })
-  }
-
-  setpredition(logo: HTMLInputElement, id: number) {
-
-  }
-
-  getPredition(id: number): number {
-    return 0;
   }
 }

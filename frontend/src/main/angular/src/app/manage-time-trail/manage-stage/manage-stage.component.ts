@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Stage} from "../../models/Stage";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {BetService} from "../../services/BetService/bet.service";
 import {TimeTrailService} from "../../services/timetrail/time-trail.service";
+import {TimeTrailStageService} from "../../services/timetrailstage/time-trail-stage.service";
 
 @Component({
   selector: 'app-manage-stage',
@@ -19,8 +19,8 @@ export class ManageStageComponent implements OnInit {
   disabled: boolean;
 
   constructor(private fb: FormBuilder,
-              private betService: BetService,
-              private timeTrailService: TimeTrailService) {
+              private timeTrailService: TimeTrailService,
+              private timeTrailStageService: TimeTrailStageService) {
   }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class ManageStageComponent implements OnInit {
     this.teamForm = this.fb.group({
       team: new FormControl({value: [null], disabled: this.disabled})
     });
-    this.timeTrailService.getWinner(this.stage.id).subscribe(val => {
+    this.timeTrailStageService.getWinner(this.stage.id).subscribe(val => {
       if (val) {
         this.teamForm.controls['team'].setValue(val.name);
       }
@@ -46,7 +46,7 @@ export class ManageStageComponent implements OnInit {
     this.teamForm.valueChanges.subscribe(val => {
       this.stage.scores.forEach(score => {
         if (score.team.name === val.team) {
-          this.timeTrailService.setWinner(this.stage.id, score.team.id).subscribe(name => {
+          this.timeTrailStageService.setWinner(this.stage.id, score.team.id).subscribe(name => {
             console.log(name);
           });
         }

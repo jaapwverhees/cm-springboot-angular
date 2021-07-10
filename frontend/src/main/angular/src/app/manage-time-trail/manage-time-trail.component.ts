@@ -30,18 +30,4 @@ export class ManageTimeTrailComponent implements OnInit {
       })
     });
   }
-
-  setScore(logo: HTMLInputElement, id: number) {
-    //TODO when time implement TimeTrailScore;
-    this.timeTrailService.setScore(logo.value, id).subscribe(result => {
-      this.timeTrail.stages.forEach(stage => {
-        stage.scores.forEach(score =>{
-          if(score.id === result.id){
-            score = result;
-          }
-        })
-      })
-    })
-  }
-
 }

@@ -12,8 +12,7 @@ import {Competition} from "../models/Competition";
 export class UserHomeComponent implements OnInit {
 
   constructor(private competitionService: CompetitionService,
-               private router: Router,
-               private authService: AuthService) {
+               private router: Router) {
   }
 
   competitions: Competition[]

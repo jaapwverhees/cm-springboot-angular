@@ -17,6 +17,7 @@ import static java.util.Optional.ofNullable;
 @RestController
 @RequestMapping("api/timetrail")
 public class TimeTrialController {
+
     @Autowired
     private TimeTrialService timeTrialService;
 
@@ -26,51 +27,6 @@ public class TimeTrialController {
     public ResponseEntity<?> createTimeTrail(@RequestBody CreateTimeTrailRequest request) {
         try {
             return ResponseEntity.ok(TimeTrailResponse.of(timeTrialService.createTimeTrail(request)));
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return ResponseEntity.status(500).build();
-        }
-    }
-
-    @GetMapping("/setWinner")
-    public ResponseEntity<?> setWinner(@RequestParam(name = "stageID") Long stageID, @RequestParam(name = "teamID") Long teamID) {
-        try {
-            return timeTrialService.setWinner(stageID, teamID)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.badRequest().build());
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return ResponseEntity.status(500).build();
-        }
-    }
-
-    @GetMapping("/getWinner")
-    public ResponseEntity<?> getWinner(@RequestParam(name = "stageID") Long stageID) {
-        try {
-            return ResponseEntity.ok(ofNullable(timeTrialService.getWinner(stageID))
-                    .orElse(null));
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return ResponseEntity.status(500).build();
-        }
-    }
-
-    @GetMapping("/bet")
-    public ResponseEntity<?> bet(@RequestParam(name = "teamID") Long teamID, @RequestParam(name = "stageID") Long stageID) {
-        try {
-            Team team = timeTrialService.placeBet(getPrincipal().getUsername(), stageID, teamID);
-            return ResponseEntity.ok(team);
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return ResponseEntity.status(500).build();
-        }
-    }
-
-    @GetMapping("/getPrediction")
-    public ResponseEntity<?> getPrediction(@RequestParam(name = "stageID") Long stageID) {
-        try {
-            return ResponseEntity.ok(ofNullable(timeTrialService.getPrediction(getPrincipal().getUsername(), stageID))
-                    .orElse(null));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
@@ -87,20 +43,5 @@ public class TimeTrialController {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
         }
-    }
-
-    @GetMapping("/getCorrectPredictions")
-    public ResponseEntity<?> getCorrectPredictions(@RequestParam(name = "stageID") Long stageID) {
-        try {
-            return ResponseEntity.ok(timeTrialService.getCorrectPredictions(stageID));
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return ResponseEntity.status(500).build();
-        }
-    }
-
-    private UserDetails getPrincipal() {
-        return (UserDetails) SecurityContextHolder.getContext().getAuthentication()
-                .getPrincipal();
     }
 }
