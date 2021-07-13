@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl} from "@angular/forms";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
-import {CreateTimeTrailRequest} from "../models/CreateTimeTrailRequest";
+import {CreateTimeTrialRequest} from "../models/CreateTimeTrialRequest";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-timetrail',
-  templateUrl: './create-timetrail.component.html',
-  styleUrls: ['./create-timetrail.component.scss']
+  templateUrl: './create-timetrial.component.html',
+  styleUrls: ['./create-timetrial.component.scss']
 })
-export class CreateTimetrailComponent implements OnInit {
+export class CreateTimetrialComponent implements OnInit {
 
   roundes = [];
   name = new FormControl();
@@ -38,7 +38,7 @@ export class CreateTimetrailComponent implements OnInit {
   }
 
   create() {
-    let request = new CreateTimeTrailRequest();
+    let request = new CreateTimeTrialRequest();
     request.stages = this.roundes;
     request.name = this.name.value;
     request.teams = this.athletes;

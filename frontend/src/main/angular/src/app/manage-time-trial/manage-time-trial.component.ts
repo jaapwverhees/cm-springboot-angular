@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
-import {TimeTrail} from "../models/TimeTrail";
+import {TimeTrial} from "../models/TimeTrial";
 import {Team} from "../models/Team";
-import {TimeTrailStage} from "../models/TimeTrailStage";
+import {TimeTrialStage} from "../models/TimeTrialStage";
 import {Score} from "../models/Score";
 import {Stage} from "../models/Stage";
 
 @Component({
   selector: 'app-manage-time-trail',
-  templateUrl: './manage-time-trail.component.html',
-  styleUrls: ['./manage-time-trail.component.scss']
+  templateUrl: './manage-time-trial.component.html',
+  styleUrls: ['./manage-time-trial.component.scss']
 })
-export class ManageTimeTrailComponent implements OnInit {
+export class ManageTimeTrialComponent implements OnInit {
 
-  timeTrail: TimeTrail;
+  timeTrail: TimeTrial;
   stages: Stage[];
 
   constructor(private activatedRoute: ActivatedRoute,

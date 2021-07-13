@@ -11,10 +11,9 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { PickSportComponent } from './pick-sport/pick-sport.component';
 import { PickCompetitionComponent } from './pick-competition/pick-competition.component';
-import { CreateTimetrailComponent } from './create-timetrail/create-timetrail.component';
+import { CreateTimetrialComponent } from './create-timetrail/create-timetrial.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ManageTimeTrailComponent } from './manage-time-trail/manage-time-trail.component';
-import { TimeTrailScoreComponent } from './time-trail-score/time-trail-score.component';
+import { ManageTimeTrialComponent } from './manage-time-trial/manage-time-trial.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { BetTimeTrailComponent } from './bet-time-trail/bet-time-trail.component';
@@ -22,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import { StageComponent } from './bet-time-trail/stage/stage.component';
-import { ManageStageComponent } from './manage-time-trail/manage-stage/manage-stage.component';
+import { ManageStageComponent } from './manage-time-trial/manage-stage/manage-stage.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +31,9 @@ import { ManageStageComponent } from './manage-time-trail/manage-stage/manage-st
     HeaderComponent,
     PickSportComponent,
     PickCompetitionComponent,
-    CreateTimetrailComponent,
+    CreateTimetrialComponent,
     PageNotFoundComponent,
-    ManageTimeTrailComponent,
-    TimeTrailScoreComponent,
+    ManageTimeTrialComponent,
     AdminHomeComponent,
     UserHomeComponent,
     BetTimeTrailComponent,

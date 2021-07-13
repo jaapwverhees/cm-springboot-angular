@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimeTrailScoreComponent } from './time-trail-score.component';
+import { CreateTimetrialComponent } from './create-timetrial.component';
 
-describe('TimeTrailScoreComponent', () => {
-  let component: TimeTrailScoreComponent;
-  let fixture: ComponentFixture<TimeTrailScoreComponent>;
+describe('CreateTimetrailComponent', () => {
+  let component: CreateTimetrialComponent;
+  let fixture: ComponentFixture<CreateTimetrialComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimeTrailScoreComponent ]
+      declarations: [ CreateTimetrialComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimeTrailScoreComponent);
+    fixture = TestBed.createComponent(CreateTimetrialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

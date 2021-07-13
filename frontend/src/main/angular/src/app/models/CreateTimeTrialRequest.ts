@@ -1,6 +1,6 @@
 import {Team} from "./Team";
 
-export class CreateTimeTrailRequest {
+export class CreateTimeTrialRequest {
   name: string;
   stages: Date[];
   teams: Team[];

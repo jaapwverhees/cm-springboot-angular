@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 
-import {TimeTrail} from "../../models/TimeTrail";
-import {CreateTimeTrailRequest} from "../../models/CreateTimeTrailRequest";
+import {TimeTrial} from "../../models/TimeTrial";
+import {CreateTimeTrialRequest} from "../../models/CreateTimeTrialRequest";
 
 const API_URL = environment.apiUrl;
 
@@ -22,12 +22,12 @@ export class TimeTrailService {
   constructor(private http: HttpClient) {
   }
 
-  public create(request: CreateTimeTrailRequest): Observable<TimeTrail> {
-    return this.http.post<TimeTrail>(this.timeTrailURL, request, this.httpOptions);
+  public create(request: CreateTimeTrialRequest): Observable<TimeTrial> {
+    return this.http.post<TimeTrial>(this.timeTrailURL, request, this.httpOptions);
   }
 
-  getCompetition(id: string): Observable<TimeTrail> {
-    return this.http.get<TimeTrail>(this.timeTrailURL, {
+  getCompetition(id: string): Observable<TimeTrial> {
+    return this.http.get<TimeTrial>(this.timeTrailURL, {
       headers: this.httpHeaders,
       params: new HttpParams().append('id', id.toString())
     })

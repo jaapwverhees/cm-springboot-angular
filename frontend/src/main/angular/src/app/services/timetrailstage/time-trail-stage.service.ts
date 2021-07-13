@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 import {Team} from "../../models/Team";
-import {TimeTrailPrediction} from "../../models/TimeTrailPrediction";
+import {TimeTrialPrediction} from "../../models/TimeTrialPrediction";
 
 const API_URL = environment.apiUrl;
 
@@ -28,8 +28,8 @@ export class TimeTrailStageService {
         .append('teamID', teamID.toString())});
   }
 
-  getPrediction(stageID: number): Observable<TimeTrailPrediction> {
-    return this.http.get<TimeTrailPrediction>(this.timeTrailStageURL + '/getPrediction', {headers: this.httpHeaders,
+  getPrediction(stageID: number): Observable<TimeTrialPrediction> {
+    return this.http.get<TimeTrialPrediction>(this.timeTrailStageURL + '/getPrediction', {headers: this.httpHeaders,
       params: new HttpParams().append("stageID", stageID.toString())});
   }
 

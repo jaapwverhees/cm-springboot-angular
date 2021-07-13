@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TimeTrail} from "../models/TimeTrail";
+import {TimeTrial} from "../models/TimeTrial";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {TimeTrailService} from "../services/timetrail/time-trail.service";
 import {MatSelectModule} from '@angular/material/select';
@@ -14,7 +14,7 @@ import {TimeTrailStageService} from "../services/timetrailstage/time-trail-stage
 })
 export class BetTimeTrailComponent implements OnInit {
 
-  timeTrail: TimeTrail;
+  timeTrail: TimeTrial;
   stages: Stage[]
 
 
