@@ -45,6 +45,5 @@ public class TournamentController {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(500).build();
         }
-
     }
 }

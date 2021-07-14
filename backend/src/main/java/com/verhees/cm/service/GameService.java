@@ -88,7 +88,6 @@ public class GameService {
                                 .getUserCredentials()
                                 .getUsername()).collect(toList()))
                 .orElse(new ArrayList<>());
-
     }
 
     public Team calculateWinner(Game game){
