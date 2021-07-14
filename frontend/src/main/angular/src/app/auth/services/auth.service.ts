@@ -4,8 +4,8 @@ import {TokenService} from './token.service'
 import {Credentials} from '../credentials';
 import {HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {JwtTokenCredentials} from "../../models/JwtTokenCredentials";
-import {Roles} from "../../models/Roles";
+import {JwtTokenCredentials} from "../../models/user/JwtTokenCredentials";
+import {Roles} from "../../models/enums/Roles";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,6 @@ export class AuthService {
     this.tokenService.getResponseHeaders(credentials)
       .subscribe((res: HttpResponse<any>) => {
         this.saveToken(res.headers.get('authorization'));
-        console.log(this.getRole())
         if(this.getRole() === Roles.ADMIN_ROLE){
           this.router.navigate([this.redirectToUrlAdmin]);
         }

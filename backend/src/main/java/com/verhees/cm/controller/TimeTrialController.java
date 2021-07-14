@@ -39,4 +39,15 @@ public class TimeTrialController {
             return ResponseEntity.status(500).build();
         }
     }
+
+    @GetMapping("correctPredictions")
+    public ResponseEntity<?> getMostCorrectPredictions(@RequestParam(name = "id") String id){
+        try{
+            return ResponseEntity.ok(timeTrialService.getMostCorrectPredictors(id));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(500).build();
+        }
+
+    }
 }

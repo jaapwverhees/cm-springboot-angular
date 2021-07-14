@@ -1,7 +1,9 @@
 package com.verhees.cm.service;
 
 import com.verhees.cm.model.competition.Competition;
+import com.verhees.cm.model.response.CompetitionResponse;
 import com.verhees.cm.repository.TimeTrailRepository;
+import com.verhees.cm.repository.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,17 @@ public class CompetitionService {
     @Autowired
     private TimeTrailRepository timeTrailRepository;
 
-    public List<Competition> findAll() {
-        List<Competition> list = new ArrayList<>();
-        timeTrailRepository.findAll().forEach(list::add);
+    @Autowired
+    private TournamentRepository tournamentRepository;
+
+    public List<CompetitionResponse> findAll() {
+        List<CompetitionResponse> list = new ArrayList<>();
+        timeTrailRepository.findAll().forEach(val -> {
+            list.add(CompetitionResponse.of(val));
+        });
+        tournamentRepository.findAll().forEach(val -> {
+            list.add(CompetitionResponse.of(val));
+        });
         return list;
     }
 }

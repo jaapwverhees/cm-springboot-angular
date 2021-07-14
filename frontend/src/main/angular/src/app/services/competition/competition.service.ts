@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Competition} from "../../models/Competition";
+import {Competition} from "../../models/competition/Competition";
 import {Observable} from "rxjs";
+import {CompetitionResponse} from "../../models/response/CompetitionResponse";
 
 const API_URL = environment.apiUrl;
 
@@ -21,7 +22,7 @@ export class CompetitionService {
   constructor(private http: HttpClient) {
   }
 
-  findAll(): Observable<Competition[]> {
-    return this.http.get<Competition[]>(this.competitionULR, this.httpOptions);
+  findAll(): Observable<CompetitionResponse[]> {
+    return this.http.get<CompetitionResponse[]>(this.competitionULR, this.httpOptions);
   }
 }

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CompetitionService} from "../services/competition/competition.service";
-import {Competition} from "../models/Competition";
+import {Competition} from "../models/competition/Competition";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth/services/auth.service";
+import {CompetitionResponse} from "../models/response/CompetitionResponse";
 
 @Component({
   selector: 'app-admin-home',
@@ -15,7 +16,7 @@ export class AdminHomeComponent implements OnInit {
               private router: Router) {
   }
 
-  competitions: Competition[]
+  competitions: CompetitionResponse[]
 
   ngOnInit() {
     this.competitionService.findAll().subscribe(result => {
@@ -23,8 +24,14 @@ export class AdminHomeComponent implements OnInit {
     });
   }
 
-  selectCompetition(competition: any) {
-    this.router.navigate(['/manage-timeTrail', competition.name]);
+  selectCompetition(competition: CompetitionResponse) {
+    if(competition.type === 'TIMETRIAL'){
+      this.router.navigate(['/manage-timeTrail', competition.name]);
+    } else if(competition.type === 'TOURNAMENT') {
+      this.router.navigate(['/manage-tournament', competition.name]);
+    } else {
+      this.router.navigate(['/pageNotFound', competition.name]);
+    }
   }
 
   createCompetition() {

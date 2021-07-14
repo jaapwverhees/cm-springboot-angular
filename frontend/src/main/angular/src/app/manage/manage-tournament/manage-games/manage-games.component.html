@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="card bg-light grabber">
+    <div class="card-header bg-warning">
+      {{game.teamOne.team.name}} - {{game.teamTwo.team.name}}
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <label>score {{game.teamOne.team.name}}:&nbsp;&nbsp;</label>
+        <input class="input" [ngModel]="game.teamOne.score" (keyup.enter)="add(teamOne, game.teamOne)" #teamOne/>
+      </div>
+      <div class="block">
+        <label>score {{game.teamTwo.team.name}}:&nbsp;&nbsp;</label>
+        <input [ngModel]="game.teamTwo.score" (keyup.enter)="add(teamTwo, game.teamTwo)" #teamTwo/>
+      </div>
+    </div>
+  </div>
+</div>

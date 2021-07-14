@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 
-import {TimeTrial} from "../../models/TimeTrial";
-import {CreateTimeTrialRequest} from "../../models/CreateTimeTrialRequest";
+import {TimeTrial} from "../../models/competition/TimeTrial";
+import {CreateTimeTrialRequest} from "../../models/requests/CreateTimeTrialRequest";
 
 const API_URL = environment.apiUrl;
 
@@ -31,5 +31,12 @@ export class TimeTrailService {
       headers: this.httpHeaders,
       params: new HttpParams().append('id', id.toString())
     })
+  }
+
+  getMostCorrectPredictions(id: string): Observable<string[]> {
+    return this.http.get<string[]>(this.timeTrailURL + '/correctPredictions', {
+      headers: this.httpHeaders,
+      params: new HttpParams().append('id', id.toString())
+    });
   }
 }

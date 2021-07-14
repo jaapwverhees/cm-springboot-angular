@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CompetitionService} from "../services/competition/competition.service";
 import {Router} from "@angular/router";
-import {Competition} from "../models/Competition";
+import {Competition} from "../models/competition/Competition";
+import {CompetitionResponse} from "../models/response/CompetitionResponse";
 
 @Component({
   selector: 'app-user-home',
@@ -14,7 +15,7 @@ export class UserHomeComponent implements OnInit {
               private router: Router) {
   }
 
-  competitions: Competition[]
+  competitions: CompetitionResponse[]
 
   ngOnInit() {
     this.competitionService.findAll().subscribe(result => {
@@ -22,8 +23,12 @@ export class UserHomeComponent implements OnInit {
     });
   }
 
-  selectCompetition(competition: any) {
-    this.router.navigate(['/bet-timeTrail', competition.name]);
+  selectCompetition(competition: CompetitionResponse) {
+    if(competition.type === 'TIMETRAIL'){
+      this.router.navigate(['/bet-timeTrail', competition.name]);
+    } else if (competition.type === 'TOURNAMENT'){
+      this.router.navigate(['/bet-tournament', competition.name]);
+    }
   }
 
 }

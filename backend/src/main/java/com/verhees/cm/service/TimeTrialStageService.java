@@ -24,9 +24,6 @@ import static java.util.stream.Collectors.toList;
 public class TimeTrialStageService {
 
     @Autowired
-    private TimeTrailRepository timeTrailRepository;
-
-    @Autowired
     private TeamRepository teamRepository;
 
     @Autowired

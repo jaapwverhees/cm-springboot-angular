@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div *ngFor="let game of games">
+    <app-games [game]="game" [scores]="getScores(game)"></app-games>
+    <br>
+  </div>
+  <app-correct-predictions [correctPredictors]="correctPredictors"></app-correct-predictions>
+  <br>
+  <br>
+</div>

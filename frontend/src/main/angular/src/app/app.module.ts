@@ -9,19 +9,25 @@ import { JwtTokenInterceptor } from './auth/interceptors/jwt.token.interceptor';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { PickSportComponent } from './pick-sport/pick-sport.component';
-import { PickCompetitionComponent } from './pick-competition/pick-competition.component';
-import { CreateTimetrialComponent } from './create-timetrail/create-timetrial.component';
+import { PickSportComponent } from './pick/pick-sport/pick-sport.component';
+import { PickCompetitionComponent } from './pick/pick-competition/pick-competition.component';
+import { CreateTimetrialComponent } from './create/create-timetrail/create-timetrial.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ManageTimeTrialComponent } from './manage-time-trial/manage-time-trial.component';
+import { ManageTimeTrialComponent } from './manage/manage-time-trial/manage-time-trial.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
-import { BetTimeTrailComponent } from './bet-time-trail/bet-time-trail.component';
+import { BetTimeTrailComponent } from './bet/bet-time-trail/bet-time-trail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
-import { StageComponent } from './bet-time-trail/stage/stage.component';
-import { ManageStageComponent } from './manage-time-trial/manage-stage/manage-stage.component';
+import { StageComponent } from './bet/bet-time-trail/stage/stage.component';
+import { ManageStageComponent } from './manage/manage-time-trial/manage-stage/manage-stage.component';
+import { CreateTournamentComponent } from './create/create-tournament/create-tournament.component';
+import { ManageTournamentComponent } from './manage/manage-tournament/manage-tournament.component';
+import { ManageGamesComponent } from './manage/manage-tournament/manage-games/manage-games.component';
+import { BetTournamentComponent } from './bet/bet-tournament/bet-tournament.component';
+import { GamesComponent } from './bet/bet-tournament/games/games.component';
+import { CorrectPredictionsComponent } from './correct-predictions/correct-predictions.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,13 @@ import { ManageStageComponent } from './manage-time-trial/manage-stage/manage-st
     UserHomeComponent,
     BetTimeTrailComponent,
     StageComponent,
-    ManageStageComponent
+    ManageStageComponent,
+    CreateTournamentComponent,
+    ManageTournamentComponent,
+    ManageGamesComponent,
+    BetTournamentComponent,
+    GamesComponent,
+    CorrectPredictionsComponent
   ],
   imports: [
     BrowserModule,

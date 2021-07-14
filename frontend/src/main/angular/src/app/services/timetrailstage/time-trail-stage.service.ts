@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
-import {Team} from "../../models/Team";
-import {TimeTrialPrediction} from "../../models/TimeTrialPrediction";
+import {Team} from "../../models/competition/Team";
+import {TimeTrialPrediction} from "../../models/prediction/TimeTrialPrediction";
 
 const API_URL = environment.apiUrl;
 
