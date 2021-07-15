@@ -15,6 +15,7 @@ export class CreateTournamentComponent implements OnInit {
 
   name = new FormControl();
   teams = [];
+  date: Date;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -42,6 +43,7 @@ export class CreateTournamentComponent implements OnInit {
     let request = new CreateChampionShipRequest();
     request.name = this.name.value;
     request.teams = this.teams;
+    request.date = this.date;
     this.championService.create(request).subscribe(result => {
       this.router.navigate(['/manage-tournament', result.name]);
     })
@@ -49,5 +51,9 @@ export class CreateTournamentComponent implements OnInit {
 
   competitioninvalid():boolean {
     return this.teams.length < 1 && this.name === null;
+  }
+
+  addDate(lg: HTMLInputElement) {
+    this.date = new Date(lg.value);
   }
 }

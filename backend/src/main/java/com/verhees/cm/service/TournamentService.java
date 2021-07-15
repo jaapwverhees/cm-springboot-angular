@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
@@ -33,6 +34,7 @@ public class TournamentService {
     public Tournament createTournament(CreateTournamentRequest request) {
         return tournamentRepository.save(Tournament.builder()
                 .name(request.getName())
+                .maxDate(request.getDate())
                 .games(generateGames(request.getTeams().stream()
                         .map(team -> Team.builder()
                                 .name(team)
@@ -71,8 +73,9 @@ public class TournamentService {
                 .orElseThrow()
                 .getGames()
                 .forEach(game -> list.addAll(game.getPredictions()));
-        Map<String, Long> map =  getPredictorsByValue(list);
-        return getKeys(map, Collections.max(map.values()));
+        return ofNullable(getPredictorsByValue(list))
+                .map(map -> map.size() > 0 ? getKeys(map, Collections.max(map.values())) : new HashSet<String>())
+                .orElse(new HashSet<>());
     }
 
     private Map<String, Long> getPredictorsByValue(List<GamePrediction> predictions) {

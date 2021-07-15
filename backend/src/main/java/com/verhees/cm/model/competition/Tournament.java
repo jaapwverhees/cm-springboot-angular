@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -25,4 +26,6 @@ public class Tournament extends Competition {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Game> games;
+
+    private Date maxDate;
 }

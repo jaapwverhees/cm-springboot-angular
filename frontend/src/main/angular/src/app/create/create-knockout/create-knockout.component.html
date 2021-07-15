@@ -6,7 +6,8 @@
         naam
       </div>
       <div class="card-body">
-        <input type="text" [formControl]="name">
+        <input type="text" [formControl]="teamOne">
+        <input type="text" [formControl]="teamTwo">
       </div>
     </div>
     <br>
@@ -17,7 +18,7 @@
       <div class="card-body">
         <input type="text" (keyup.enter)="add(logo)" placeholder="naam team" #logo>
         <ul class="list-group">
-          <li *ngFor="let athlete of teams" class="list-group-item" >
+          <li *ngFor="let athlete of games" class="list-group-item" >
             {{athlete}}
             <button class="pull-right btn btn-sm btn-warning float-right" (click)="deleteTeam(athlete)">Delete
             </button>
@@ -27,7 +28,7 @@
     </div>
     <div class="card bg-light grabber">
       <div class="card-header bg-warning">
-        eind-datum invullen voor gebruikers.
+        eind-datum invullen voor gebruikers
       </div>
       <div class="card-body">
         <input type="date" (keyup.enter)="addDate(lg)" #lg>

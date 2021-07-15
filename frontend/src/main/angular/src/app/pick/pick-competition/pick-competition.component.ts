@@ -29,7 +29,7 @@ export class PickCompetitionComponent implements OnInit {
     if (this.sport === Sports.BICLYCE) {
       this.competitions = [Competitions.TIMETRAIL]
     } else if (this.sport === Sports.FOOTBALL) {
-      this.competitions = [Competitions.CHAMPIONSHIP, Competitions.KNOCKOUT]
+      this.competitions = [Competitions.TOURNAMENT, Competitions.KNOCKOUT]
     }
   }
 
@@ -37,7 +37,7 @@ export class PickCompetitionComponent implements OnInit {
 
     if (comp === Competitions.TIMETRAIL) {
       this.router.navigate(['create-timeTrail'])
-    } else if (comp === Competitions.CHAMPIONSHIP) {
+    } else if (comp === Competitions.TOURNAMENT) {
       this.router.navigate(['create-tournament'])
     } else {
       this.router.navigate(['/pageNotFound']);

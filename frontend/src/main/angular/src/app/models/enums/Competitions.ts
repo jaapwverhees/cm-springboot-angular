@@ -1,6 +1,6 @@
 export enum Competitions {
   KNOCKOUT = 'knockout',
   CHAMPIONSHIP = 'champoinship',
-  TOURNAMENT = 'TOURNAMENT',
+  TOURNAMENT = 'toernooi',
   TIMETRAIL = 'tijdsrit'
 }

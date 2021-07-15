@@ -17,7 +17,7 @@ export class BetTournamentComponent implements OnInit {
   tournament: Tournament;
   games: Game[];
   correctPredictors: string[];
-
+  disabled: boolean;
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private tournamentService: TournamentService) {}
@@ -27,6 +27,8 @@ export class BetTournamentComponent implements OnInit {
       this.tournamentService.getCompetition(params['id']).subscribe(result => {
         this.tournament = result;
         this.games = result.games;
+        this.disabled = new Date(this.tournament.maxDate).getTime() < new Date().getTime();
+        console.log(this.disabled)
         this.tournamentService.getMostCorrectPredictions(this.tournament.name).subscribe(result => {
           this.correctPredictors = result;
         });

@@ -1,6 +1,13 @@
-<div class="container-fluid">
+<div class="container-fluid" [ngClass]="{'nojoy': disabled}">
+  <div *ngIf="disabled" class="center text-warning">
+    <div>
+      invoer kan niet meer gewijzigd worden.
+    </div>
+    <br>
+  </div>
+
   <div *ngFor="let game of games">
-    <app-games [game]="game" [scores]="getScores(game)"></app-games>
+    <app-games [game]="game" [scores]="getScores(game)" [disabled]="disabled"></app-games>
     <br>
   </div>
   <app-correct-predictions [correctPredictors]="correctPredictors"></app-correct-predictions>

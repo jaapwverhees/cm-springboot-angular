@@ -15,11 +15,12 @@ export class GamesComponent implements OnInit {
 
   @Input()
   game: Game;
-  winner: any;
-  disabled: boolean;
-  gameForm: FormGroup;
   @Input()
   scores: Score[];
+  winner: any;
+  @Input()
+  disabled: boolean;
+  gameForm: FormGroup;
   myTeam: String;
   correctPredictions: string[] = [];
   constructor(private fb: FormBuilder,

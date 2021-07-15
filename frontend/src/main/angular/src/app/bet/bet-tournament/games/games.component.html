@@ -5,7 +5,7 @@
     </div>
     <div class="card-body" >
       <h5 class="center" *ngIf="winner"> winnaar = {{winner}}!!</h5>
-      <div [formGroup]="gameForm" >
+      <div [formGroup]="gameForm">
         <select formControlName="team" [disabled]="disabled">
           <option [ngValue]="null" disabled >athleet</option>
           <option  *ngFor="let score of scores" [ngValue]="score.team.name">{{score.team.name}}</option>

@@ -2,6 +2,7 @@ package com.verhees.cm.model.request;
 
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -13,4 +14,5 @@ import java.util.Set;
 public class CreateTournamentRequest {
     private String name;
     private Set<String> teams;
+    private Date date;
 }

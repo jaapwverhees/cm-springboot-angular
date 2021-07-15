@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +18,7 @@ public class TournamentController {
 
     private final Logger logger = LoggerFactory.getLogger(TimeTrialController.class);
 
+    @Secured({"ADMIN"})
     @PostMapping
     public ResponseEntity<?> createTournament(@RequestBody CreateTournamentRequest request) {
         try {
@@ -27,6 +29,7 @@ public class TournamentController {
         }
     }
 
+    @Secured({"ADMIN", "ROLE_USER"})
     @GetMapping()
     public ResponseEntity<?> getTournament(@RequestParam(name = "id") String id) {
         try {
@@ -37,6 +40,7 @@ public class TournamentController {
         }
     }
 
+    @Secured({"ROLE_USER"})
     @GetMapping("correctPredictions")
     public ResponseEntity<?> getMostCorrectPredictions(@RequestParam(name = "id") String id){
         try{

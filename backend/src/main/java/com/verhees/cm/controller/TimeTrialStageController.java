@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class TimeTrialStageController {
 
     private final Logger logger = LoggerFactory.getLogger(TimeTrialController.class);
 
+    @Secured({"ROLE_USER"})
     @GetMapping("/bet")
     public ResponseEntity<?> bet(@RequestParam(name = "teamID") Long teamID, @RequestParam(name = "stageID") Long stageID) {
         try {
@@ -39,6 +41,7 @@ public class TimeTrialStageController {
         }
     }
 
+    @Secured({"ROLE_USER"})
     @GetMapping("/getPrediction")
     public ResponseEntity<?> getPrediction(@RequestParam(name = "stageID") Long stageID) {
         try {
@@ -50,6 +53,7 @@ public class TimeTrialStageController {
         }
     }
 
+    @Secured({"ROLE_USER"})
     @GetMapping("/getWinner")
     public ResponseEntity<?> getWinner(@RequestParam(name = "stageID") Long stageID) {
         try {
@@ -66,6 +70,7 @@ public class TimeTrialStageController {
                 .getPrincipal();
     }
 
+    @Secured({"ROLE_USER"})
     @GetMapping("/getCorrectPredictions")
     public ResponseEntity<?> getCorrectPredictions(@RequestParam(name = "stageID") Long stageID) {
         try {
@@ -76,6 +81,7 @@ public class TimeTrialStageController {
         }
     }
 
+    @Secured({"ADMIN"})
     @GetMapping("/setWinner")
     public ResponseEntity<?> setWinner(@RequestParam(name = "stageID") Long stageID, @RequestParam(name = "teamID") Long teamID) {
         try {
