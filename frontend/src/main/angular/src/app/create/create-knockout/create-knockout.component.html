@@ -6,26 +6,38 @@
         naam
       </div>
       <div class="card-body">
-        <input type="text" [formControl]="teamOne">
-        <input type="text" [formControl]="teamTwo">
+        <input type="text" [formControl]="name">
       </div>
     </div>
     <br>
     <div class="card bg-light grabber">
       <div class="card-header bg-warning">
+        naam
+      </div>
+      <div class="card-body">
+        <form [formGroup]="match" (ngSubmit)="onFormSubmit()">
+          team een: <input formControlName="teamOne"  placeholder="team een">
+          team twee: <input formControlName="teamTwo"  placeholder="team twee">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <br>
+    <div class="card bg-light grabber" *ngIf="games.length > 0">
+      <div class="card-header bg-warning">
         deelnemers
       </div>
       <div class="card-body">
-        <input type="text" (keyup.enter)="add(logo)" placeholder="naam team" #logo>
         <ul class="list-group">
-          <li *ngFor="let athlete of games" class="list-group-item" >
-            {{athlete}}
-            <button class="pull-right btn btn-sm btn-warning float-right" (click)="deleteTeam(athlete)">Delete
+          <li *ngFor="let game of games" class="list-group-item" >
+            {{game.teamOne}} - {{game.teamTwo}}
+            <button class="pull-right btn btn-sm btn-warning float-right" (click)="deleteTeam(game)">Delete
             </button>
           </li>
         </ul>
       </div>
     </div>
+    <br>
     <div class="card bg-light grabber">
       <div class="card-header bg-warning">
         eind-datum invullen voor gebruikers

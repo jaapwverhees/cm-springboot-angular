@@ -1,0 +1,16 @@
+<div class="container-fluid" *ngIf="game.teamOne && game.teamTwo">
+  <br>
+  <div class="card bg-light grabber">
+    <div class="card-header bg-warning">
+      {{game.teamOne.team.name}} - {{game.teamTwo.team.name}}
+    </div>
+    <div class="card-body">
+      <div class="block settings">
+        <label>score {{game.teamTwo.team.name}}</label>
+        <input [ngModel]="game.teamTwo.score" (keyup.enter)="add(valTwo, game.teamTwo)" #valTwo/>
+        <label>score {{game.teamOne.team.name}}</label>
+        <input class="input" [ngModel]="game.teamOne.score" (keyup.enter)="add(valOne, game.teamOne)" #valOne/>
+      </div>
+    </div>
+  </div>
+</div>

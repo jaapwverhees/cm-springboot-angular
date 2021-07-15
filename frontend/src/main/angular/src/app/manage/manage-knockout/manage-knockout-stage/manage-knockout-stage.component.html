@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="card bg-light grabber">
+    <div class="card-header bg-warning">
+      ronde: {{stage.stageIndex}}
+    </div>
+    <app-manage-knockout-stage-game *ngFor="let game of stage.games" [game]="game"></app-manage-knockout-stage-game>
+
+    <br>
+  </div>
+  <br>
+  <button *ngIf="valid()" (click)="onClick()" class="center btn btn-sm btn-warning center" >genereer volgende ronde</button>
+  <br>
+  <br>
+  <br>
+</div>

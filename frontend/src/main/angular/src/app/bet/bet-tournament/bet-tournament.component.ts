@@ -28,7 +28,6 @@ export class BetTournamentComponent implements OnInit {
         this.tournament = result;
         this.games = result.games;
         this.disabled = new Date(this.tournament.maxDate).getTime() < new Date().getTime();
-        console.log(this.disabled)
         this.tournamentService.getMostCorrectPredictions(this.tournament.name).subscribe(result => {
           this.correctPredictors = result;
         });

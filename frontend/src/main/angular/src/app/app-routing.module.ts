@@ -14,6 +14,8 @@ import {BetTimeTrailComponent} from "./bet/bet-time-trail/bet-time-trail.compone
 import {CreateTournamentComponent} from "./create/create-tournament/create-tournament.component";
 import {ManageTournamentComponent} from "./manage/manage-tournament/manage-tournament.component";
 import {BetTournamentComponent} from "./bet/bet-tournament/bet-tournament.component";
+import {CreateKnockoutComponent} from "./create/create-knockout/create-knockout.component";
+import {ManageKnockoutComponent} from "./manage/manage-knockout/manage-knockout.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,8 +25,10 @@ const routes: Routes = [
   { canActivate: [AdminGuard], path: 'pick-competition', component: PickCompetitionComponent },
   { canActivate: [AdminGuard], path: 'create-timeTrail', component: CreateTimetrialComponent },
   { canActivate: [AdminGuard], path: 'create-tournament', component: CreateTournamentComponent },
+  { canActivate: [AdminGuard], path: 'create-knockout', component: CreateKnockoutComponent },
   { canActivate: [AdminGuard], path: 'manage-timeTrail/:id', component: ManageTimeTrialComponent },
   { canActivate: [AdminGuard], path: 'manage-tournament/:id', component: ManageTournamentComponent },
+  { canActivate: [AdminGuard], path: 'manage-knockout/:id', component: ManageKnockoutComponent },
   { canActivate: [UserGuard], path: 'bet-timeTrail/:id', component: BetTimeTrailComponent },
   { canActivate: [UserGuard], path: 'bet-tournament/:id', component: BetTournamentComponent },
   { path: 'pageNotFound', component: PageNotFoundComponent }

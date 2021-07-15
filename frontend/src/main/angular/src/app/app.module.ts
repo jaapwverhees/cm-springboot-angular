@@ -29,6 +29,9 @@ import { BetTournamentComponent } from './bet/bet-tournament/bet-tournament.comp
 import { GamesComponent } from './bet/bet-tournament/games/games.component';
 import { CorrectPredictionsComponent } from './correct-predictions/correct-predictions.component';
 import { CreateKnockoutComponent } from './create/create-knockout/create-knockout.component';
+import { ManageKnockoutComponent } from './manage/manage-knockout/manage-knockout.component';
+import { ManageKnockoutStageComponent } from './manage/manage-knockout/manage-knockout-stage/manage-knockout-stage.component';
+import { ManageKnockoutStageGameComponent } from './manage/manage-knockout/manage-knockout-stage/manage-knockout-stage-game/manage-knockout-stage-game.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { CreateKnockoutComponent } from './create/create-knockout/create-knockou
     BetTournamentComponent,
     GamesComponent,
     CorrectPredictionsComponent,
-    CreateKnockoutComponent
+    CreateKnockoutComponent,
+    ManageKnockoutComponent,
+    ManageKnockoutStageComponent,
+    ManageKnockoutStageGameComponent
   ],
   imports: [
     BrowserModule,

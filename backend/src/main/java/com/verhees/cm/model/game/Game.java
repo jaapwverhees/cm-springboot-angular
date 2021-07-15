@@ -5,6 +5,7 @@ import com.verhees.cm.model.exceptions.DrawException;
 import com.verhees.cm.model.exceptions.NoScoreException;
 import com.verhees.cm.model.prediction.GamePrediction;
 import com.verhees.cm.model.prediction.TimeTrialStagePrediction;
+import com.verhees.cm.model.request.GameRequest;
 import com.verhees.cm.model.score.Score;
 import com.verhees.cm.model.team.Team;
 import lombok.*;
@@ -46,6 +47,8 @@ public class Game {
 
     private String Winner;
 
+    private int gameIndex;
+
     public Team calculateWinner(){
         if(teamOne.getScore() == null || teamTwo.getScore() == null) {
             throw new NoScoreException();
@@ -57,7 +60,7 @@ public class Game {
                 teamOne.getTeam() : teamTwo.getTeam();
     }
 
-    public List<String> getCorrectPredictions(){
+    public List<String> correctPredictions(){
         try{
             Team team = calculateWinner();
             return predictions.stream()
@@ -67,5 +70,21 @@ public class Game {
         } catch(DrawException | NoScoreException e){
             return emptyList();
         }
+    }
+
+    public static Game of(GameRequest gameRequest, int index) {
+        return Game.builder()
+                .teamOne(Score.builder()
+                        .team(Team.builder()
+                                .name(gameRequest.getTeamOne())
+                                .build())
+                        .build())
+                .teamTwo(Score.builder()
+                        .team(Team.builder()
+                                .name(gameRequest.getTeamTwo())
+                                .build())
+                        .build())
+                .gameIndex(index)
+                .build();
     }
 }

@@ -39,6 +39,8 @@ export class PickCompetitionComponent implements OnInit {
       this.router.navigate(['create-timeTrail'])
     } else if (comp === Competitions.TOURNAMENT) {
       this.router.navigate(['create-tournament'])
+    } else if (comp === Competitions.KNOCKOUT)  {
+      this.router.navigate(['create-knockout'])
     } else {
       this.router.navigate(['/pageNotFound']);
     }

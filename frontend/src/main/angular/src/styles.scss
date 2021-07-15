@@ -19,3 +19,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .nojoy {
   pointer-events: none;
 }
+
+div.settings {
+  display:grid;
+  grid-template-columns: max-content max-content;
+  grid-gap:5px;
+}
+div.settings label       { text-align:right; }
+div.settings label:after { content: ":"; }

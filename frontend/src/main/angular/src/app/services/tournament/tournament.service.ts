@@ -35,6 +35,7 @@ export class TournamentService {
       params: new HttpParams().append('id', id.toString())
     });
   }
+
   setScore(request: SetScoreRequest): Observable<Score> {
     return this.http.post<Score>(this.championURL + '/score', request, this.httpOptions);
   }
