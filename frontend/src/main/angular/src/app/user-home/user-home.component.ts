@@ -19,6 +19,7 @@ export class UserHomeComponent implements OnInit {
 
   ngOnInit() {
     this.competitionService.findAll().subscribe(result => {
+      console.log(result)
       this.competitions = result;
     });
   }
@@ -28,6 +29,11 @@ export class UserHomeComponent implements OnInit {
       this.router.navigate(['/bet-timeTrail', competition.name]);
     } else if (competition.type === 'TOURNAMENT'){
       this.router.navigate(['/bet-tournament', competition.name]);
+    }
+    else if (competition.type === 'KNOCKOUT'){
+      this.router.navigate(['/bet-knockout', competition.name]);
+    } else if (competition.type === 'KNOCKOUT') {
+      this.router.navigate(['pageNotFound', competition.name]);
     }
   }
 

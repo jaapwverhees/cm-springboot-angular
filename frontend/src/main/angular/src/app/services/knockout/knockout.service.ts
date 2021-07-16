@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {Tournament} from "../../models/competition/Tournament";
 import {CreateKnockoutRequest} from "../../models/requests/CreateKnockoutRequest";
 import {Knockout} from "../../models/competition/Knockout";
+import {Team} from "../../models/competition/Team";
 
 const API_URL = environment.apiUrl;
 
@@ -43,5 +44,18 @@ export class KnockoutService {
         .set('stageIndex', stageIndex.toString())
     })
 
+  }
+
+  bet(gameID: number, teamID: number) {
+    return this.http.get<Team>(this.knockoutURL + '/bet', {headers: this.httpHeaders,
+      params: new HttpParams().append("gameID", gameID.toString())
+        .append('teamID', teamID.toString())});
+  }
+
+  getMostCorrectPredictions(id: string) {
+    return this.http.get<string[]>(this.knockoutURL + '/correctPredictions', {
+      headers: this.httpHeaders,
+      params: new HttpParams().append('id', id.toString())
+    });
   }
 }

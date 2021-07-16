@@ -52,4 +52,15 @@ public class KnockoutController {
             return ResponseEntity.status(500).build();
         }
     }
+
+    @Secured({"ROLE_USER"})
+    @GetMapping("correctPredictions")
+    public ResponseEntity<?> getMostCorrectPredictions(@RequestParam(name = "id") String id){
+        try{
+            return ResponseEntity.ok(service.getMostCorrectPredictors(id));
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(500).build();
+        }
+    }
 }

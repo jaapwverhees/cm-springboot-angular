@@ -16,6 +16,7 @@ import {ManageTournamentComponent} from "./manage/manage-tournament/manage-tourn
 import {BetTournamentComponent} from "./bet/bet-tournament/bet-tournament.component";
 import {CreateKnockoutComponent} from "./create/create-knockout/create-knockout.component";
 import {ManageKnockoutComponent} from "./manage/manage-knockout/manage-knockout.component";
+import {BetKnockOutComponent} from "./bet/bet-knock-out/bet-knock-out.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { canActivate: [AdminGuard], path: 'manage-knockout/:id', component: ManageKnockoutComponent },
   { canActivate: [UserGuard], path: 'bet-timeTrail/:id', component: BetTimeTrailComponent },
   { canActivate: [UserGuard], path: 'bet-tournament/:id', component: BetTournamentComponent },
+  { canActivate: [UserGuard], path: 'bet-knockout/:id', component: BetKnockOutComponent },
   { path: 'pageNotFound', component: PageNotFoundComponent }
 ];
 

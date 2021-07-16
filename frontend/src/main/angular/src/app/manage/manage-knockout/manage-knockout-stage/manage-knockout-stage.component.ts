@@ -42,7 +42,6 @@ export class ManageKnockoutStageComponent implements OnInit {
 
   onClick() {
     this.service.generateNextStage(this.knockout.name, this.stage.stageIndex).subscribe(res => {
-      console.log(res)
     });
   }
 }

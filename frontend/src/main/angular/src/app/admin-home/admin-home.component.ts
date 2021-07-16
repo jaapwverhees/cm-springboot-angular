@@ -29,6 +29,8 @@ export class AdminHomeComponent implements OnInit {
       this.router.navigate(['/manage-timeTrail', competition.name]);
     } else if(competition.type === 'TOURNAMENT') {
       this.router.navigate(['/manage-tournament', competition.name]);
+    } else if(competition.type === 'KNOCKOUT') {
+      this.router.navigate(['/manage-knockout', competition.name]);
     } else {
       this.router.navigate(['/pageNotFound', competition.name]);
     }

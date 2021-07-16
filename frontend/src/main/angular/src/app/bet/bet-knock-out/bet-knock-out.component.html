@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div *ngIf="disabled" class="center text-warning">
+    <div>
+      invoer kan niet meer gewijzigd worden.
+    </div>
+    <br>
+  </div>
+  <div *ngFor="let stage of stages">
+    <app-knockout-stage [stage]="stage" [knockout]="knockout"></app-knockout-stage>
+    <br>
+  </div>
+  <app-correct-predictions [correctPredictors]="correctPredictors"></app-correct-predictions>
+  <br>
+  <br>
+</div>
+

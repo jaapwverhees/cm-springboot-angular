@@ -1,8 +1,10 @@
 package com.verhees.cm.service;
 
 import com.verhees.cm.controller.TimeTrialStageController;
+import com.verhees.cm.model.competition.Knockout;
 import com.verhees.cm.model.competition.TimeTrail;
 import com.verhees.cm.model.competition.Tournament;
+import com.verhees.cm.repository.KnockoutRepository;
 import com.verhees.cm.repository.TimeTrailRepository;
 import com.verhees.cm.repository.TournamentRepository;
 import org.junit.Before;
@@ -25,6 +27,9 @@ public class CompetitionServiceTest {
     @Mock
     private TournamentRepository tournamentRepository;
 
+    @Mock
+    private KnockoutRepository knockoutRepository;
+
     @InjectMocks
     private CompetitionService competitionService;
 
@@ -35,12 +40,18 @@ public class CompetitionServiceTest {
 
     @Test
     public void findAll() {
-        when(timeTrailRepository.findAll()).thenReturn(singletonList(TimeTrail.builder()
+        when(timeTrailRepository.findAll())
+                .thenReturn(singletonList(TimeTrail.builder()
                 .name("hello")
                 .build()));
-        when(tournamentRepository.findAll()).thenReturn(singletonList(Tournament.builder()
+        when(tournamentRepository.findAll())
+                .thenReturn(singletonList(Tournament.builder()
                 .name("bla")
                 .build()));
-        assertEquals(2, competitionService.findAll().size());
+        when(knockoutRepository.findAll())
+                .thenReturn(singletonList(Knockout.builder()
+                        .name("knockout")
+                        .build()));
+        assertEquals(3, competitionService.findAll().size());
     }
 }

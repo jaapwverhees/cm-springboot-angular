@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="card bg-light grabber">
+    <div class="card-header bg-warning">
+      ronde {{stage.stageIndex + 1}}
+    </div>
+    <div class="card-body" >
+      <div *ngFor="let game of games; let i = index">
+        <app-bet-knockout-game [game]="game" [knockout]="knockout" [counter]="i"></app-bet-knockout-game>
+      </div>
+    </div>
+  </div>
+</div>

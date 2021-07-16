@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.verhees.cm.service.util.TournamentUtil.getKeys;
+import static com.verhees.cm.service.util.TournamentUtil.getPredictorsByValue;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
@@ -76,29 +78,5 @@ public class TournamentService {
         return ofNullable(getPredictorsByValue(list))
                 .map(map -> map.size() > 0 ? getKeys(map, Collections.max(map.values())) : new HashSet<String>())
                 .orElse(new HashSet<>());
-    }
-
-    private Map<String, Long> getPredictorsByValue(List<GamePrediction> predictions) {
-        return predictions.stream()
-                .filter(gamePrediction -> gamePrediction.getTeam()
-                        .equals(calculateWinner(gamePrediction.getGame())))
-                .map(GamePrediction::getUser)
-                .map(User::getUserCredentials)
-                .map(UserCredentials::getUsername)
-                .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
-    }
-
-    public Team calculateWinner(Game game){
-        try{
-            return game.calculateWinner();
-        } catch (NoScoreException | DrawException e){
-            return null;
-        }
-    }
-    public <K, V> Set<K> getKeys(Map<K, V> map, V value) {
-        return map.entrySet().stream()
-                .filter(entry -> value.equals(entry.getValue()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toSet());
     }
 }

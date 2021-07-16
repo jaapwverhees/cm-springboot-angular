@@ -1,12 +1,11 @@
 package com.verhees.cm.model.response;
 
+import com.verhees.cm.model.competition.Knockout;
 import com.verhees.cm.model.competition.TimeTrail;
 import com.verhees.cm.model.competition.Tournament;
-import com.verhees.cm.model.enums.CompetionType;
 import lombok.*;
 
-import static com.verhees.cm.model.enums.CompetionType.TIMETRAIL;
-import static com.verhees.cm.model.enums.CompetionType.TOURNAMENT;
+import static com.verhees.cm.model.enums.CompetionType.*;
 
 @Builder
 @Getter
@@ -28,6 +27,13 @@ public class CompetitionResponse {
         return CompetitionResponse.builder()
                 .name(tournament.getName())
                 .type(TOURNAMENT.type)
+                .build();
+    }
+
+    public static CompetitionResponse of(Knockout knockout){
+        return CompetitionResponse.builder()
+                .name(knockout.getName())
+                .type(KNOCKOUT.type)
                 .build();
     }
 }

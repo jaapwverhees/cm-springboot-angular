@@ -2,19 +2,18 @@ package com.verhees.cm.service;
 
 import com.verhees.cm.model.competition.Knockout;
 import com.verhees.cm.model.game.Game;
+import com.verhees.cm.model.prediction.GamePrediction;
 import com.verhees.cm.model.request.CreateKnockoutRequest;
 import com.verhees.cm.model.request.GameRequest;
 import com.verhees.cm.model.score.Score;
 import com.verhees.cm.model.stage.KnockoutStage;
 import com.verhees.cm.model.team.Team;
 import com.verhees.cm.repository.KnockoutRepository;
+import com.verhees.cm.service.util.TournamentUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Optional.ofNullable;
@@ -39,6 +38,7 @@ public class KnockoutService {
         createEmptyStages(stageIndex, stages, stage);
 
         return knockoutRepository.save(Knockout.builder()
+                .maxDate(request.getMaxDate())
                 .name(request.getName())
                 .stages(stages)
                 .build());
@@ -118,5 +118,19 @@ public class KnockoutService {
                 });
 
         return knockoutRepository.save(knockout);
+    }
+
+    public Set<String> getMostCorrectPredictors(String id) {
+        List<GamePrediction> list = new ArrayList<>();
+        knockoutRepository.findById(id)
+                .orElseThrow()
+                .getStages()
+                .stream()
+                .map(KnockoutStage::getGames)
+                .flatMap(List::stream)
+                .forEach(game -> list.addAll(game.getPredictions()));
+        return ofNullable(TournamentUtil.getPredictorsByValue(list))
+                .map(map -> map.size() > 0 ? TournamentUtil.getKeys(map, Collections.max(map.values())) : new HashSet<String>())
+                .orElse(new HashSet<>());
     }
 }
