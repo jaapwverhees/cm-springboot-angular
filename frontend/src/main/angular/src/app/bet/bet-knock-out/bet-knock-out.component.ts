@@ -25,6 +25,9 @@ export class BetKnockOutComponent implements OnInit {
       this.knockoutService.getKnockout(params['id']).subscribe(result => {
         this.knockout = result;
         this.stages = result.stages;
+        console.log(new Date(this.knockout.maxDate) <= new Date())
+        console.log(new Date(this.knockout.maxDate))
+        console.log(new Date())
         this.disabled = new Date(this.knockout.maxDate) <= new Date();
         this.knockoutService.getMostCorrectPredictions(this.knockout.name).subscribe(result => {
           this.correctPredictors = result;

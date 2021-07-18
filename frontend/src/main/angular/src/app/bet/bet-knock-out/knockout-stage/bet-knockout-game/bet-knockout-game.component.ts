@@ -40,11 +40,10 @@ export class BetKnockoutGameComponent implements OnInit {
       .forEach(game => {
         this.teams.push(game.teamOne.team);
         this.teams.push(game.teamTwo.team);
-
-        this.gameForm = this.fb.group({
-          team: new FormControl({value: [null], disabled: new Date(this.knockout.maxDate) > new Date()})
-        });
       });
+    this.gameForm = this.fb.group({
+      team: new FormControl({value: [null]})
+    });
     this.gameService.getPrediction(this.game.id).subscribe(val => {
       if(val){
         this.myTeam = val.team.name;

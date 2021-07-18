@@ -43,7 +43,7 @@
         eind-datum invullen voor gebruikers
       </div>
       <div class="card-body">
-        <input type="date" (keyup.enter)="addDate(lg)" #lg>
+        <input type="date" (blur)="addDate(lg)" (keyup.enter)="addDate(lg)" #lg>
       </div>
     </div>
   </div>

@@ -21,7 +21,6 @@ export class KnockoutStageComponent implements OnInit {
   counter = 0;
   games: Game[];
   teamForm: FormGroup;
-  disabled: boolean;
   correctPredictions = [];
 
   constructor(private fb: FormBuilder) { }
@@ -35,7 +34,7 @@ export class KnockoutStageComponent implements OnInit {
       })
     this.games = this.stage.games;
     this.teamForm = this.fb.group({
-      team: new FormControl({value: [null], disabled: this.disabled})
+      team: new FormControl({value: [null]})
     });
   }
 

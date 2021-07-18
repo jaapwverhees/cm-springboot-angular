@@ -7,9 +7,9 @@
     <div class="card-body">
       <div class="block settings">
         <label>score {{game.teamTwo.team.name}}</label>
-        <input [ngModel]="game.teamTwo.score" (keyup.enter)="add(valTwo, game.teamTwo)" #valTwo/>
+        <input [ngModel]="game.teamTwo.score" (blur)="add(valTwo, game.teamTwo)" (keyup.enter)="add(valTwo, game.teamTwo)" #valTwo/>
         <label>score {{game.teamOne.team.name}}</label>
-        <input class="input" [ngModel]="game.teamOne.score" (keyup.enter)="add(valOne, game.teamOne)" #valOne/>
+        <input class="input" [ngModel]="game.teamOne.score" (blur)="add(valOne, game.teamOne)" (keyup.enter)="add(valOne, game.teamOne)" #valOne/>
       </div>
     </div>
   </div>
