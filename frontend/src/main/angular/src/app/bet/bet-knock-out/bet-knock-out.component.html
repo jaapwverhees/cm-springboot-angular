@@ -5,7 +5,7 @@
     </div>
     <br>
   </div>
-  <div *ngFor="let stage of stages">
+  <div *ngFor="let stage of stages" [ngClass]="{'nojoy': disabled}">
     <app-knockout-stage [stage]="stage" [knockout]="knockout"></app-knockout-stage>
     <br>
   </div>

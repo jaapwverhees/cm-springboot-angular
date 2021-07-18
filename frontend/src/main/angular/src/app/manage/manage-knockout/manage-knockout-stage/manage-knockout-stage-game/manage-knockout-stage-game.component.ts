@@ -21,16 +21,12 @@ export class ManageKnockoutStageGameComponent implements OnInit {
 
   }
 
-  onFormSubmit() {
-
-  }
-
   add(element: HTMLInputElement, score: Score) {
     let request = new SetScoreRequest()
     request.scoreID = score.id
     request.value = Number(element.value);
     this.gameService.setScore(request).subscribe(res =>{
-      console.log(res);
+      
     });
   }
 }

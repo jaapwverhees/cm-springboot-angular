@@ -3,6 +3,7 @@ import {Stage} from "../../../models/competition/Stage";
 import {KnockoutStage} from "../../../models/competition/KnockoutStage";
 import {Knockout} from "../../../models/competition/Knockout";
 import {KnockoutService} from "../../../services/knockout/knockout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-manage-knockout-stage',
@@ -16,12 +17,11 @@ export class ManageKnockoutStageComponent implements OnInit {
 
   @Input()
   knockout: Knockout
-  teamForm: any;
 
-  constructor(private service: KnockoutService) { }
+  constructor(private service: KnockoutService,
+              private router: Router) { }
 
   ngOnInit() {
-    console.log(this.stage.stageIndex)
   }
 
   valid(): boolean {
@@ -42,6 +42,14 @@ export class ManageKnockoutStageComponent implements OnInit {
 
   onClick() {
     this.service.generateNextStage(this.knockout.name, this.stage.stageIndex).subscribe(res => {
+      this.reloadComponent();
     });
+  }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 }

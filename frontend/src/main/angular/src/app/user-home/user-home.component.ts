@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CompetitionService} from "../services/competition/competition.service";
 import {Router} from "@angular/router";
-import {Competition} from "../models/competition/Competition";
 import {CompetitionResponse} from "../models/response/CompetitionResponse";
 
 @Component({
@@ -19,18 +18,16 @@ export class UserHomeComponent implements OnInit {
 
   ngOnInit() {
     this.competitionService.findAll().subscribe(result => {
-      console.log(result)
       this.competitions = result;
     });
   }
 
   selectCompetition(competition: CompetitionResponse) {
-    if(competition.type === 'TIMETRAIL'){
+    if (competition.type === 'TIMETRAIL') {
       this.router.navigate(['/bet-timeTrail', competition.name]);
-    } else if (competition.type === 'TOURNAMENT'){
+    } else if (competition.type === 'TOURNAMENT') {
       this.router.navigate(['/bet-tournament', competition.name]);
-    }
-    else if (competition.type === 'KNOCKOUT'){
+    } else if (competition.type === 'KNOCKOUT') {
       this.router.navigate(['/bet-knockout', competition.name]);
     } else if (competition.type === 'KNOCKOUT') {
       this.router.navigate(['pageNotFound', competition.name]);

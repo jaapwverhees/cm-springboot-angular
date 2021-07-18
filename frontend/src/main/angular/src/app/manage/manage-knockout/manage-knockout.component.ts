@@ -20,7 +20,6 @@ export class ManageKnockoutComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.knockoutService.getKnockout(params['id']).subscribe(result => {
         this.knockout = result;
-        console.log(this.knockout)
         this.stages = result.stages.sort((a,b) => a.stageIndex - b.stageIndex);
       });
     });

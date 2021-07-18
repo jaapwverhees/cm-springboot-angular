@@ -28,7 +28,6 @@ export class BetKnockOutComponent implements OnInit {
         this.disabled = new Date(this.knockout.maxDate) <= new Date();
         this.knockoutService.getMostCorrectPredictions(this.knockout.name).subscribe(result => {
           this.correctPredictors = result;
-          console.log(result)
         });
       });
     });
